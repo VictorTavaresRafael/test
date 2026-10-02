@@ -1,0 +1,1372 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFC857">
+<title>Chapeuzinho Vermelho — Os Contos Dão Conta</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Nunito:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2B2540;--muted:#5A5470;--paper:#FFF8E6;--card:#FFFDF7;--gold:#FFC857;--gold-deep:#E9A93A;--line:#EBD08A;--hood:#C9362B;--hood-deep:#8F2119;--leaf:#2F7A48;--leaf-deep:#1F5C3B;--sky:#BDE8F5}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#FFF2CC;color:var(--ink);font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif}
+h1,h2,h3,.disp{font-family:'Fredoka','Nunito',system-ui,sans-serif;margin:0;font-weight:600;letter-spacing:.2px}
+p{margin:0}
+[hidden]{display:none!important}
+button{font-family:'Fredoka','Nunito',system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible,input:focus-visible,textarea:focus-visible,.hot:focus-visible{outline:4px solid var(--ink);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.app{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;
+background:radial-gradient(1200px 520px at 85% -10%,#FFE08A 0%,rgba(255,224,138,0) 62%),linear-gradient(180deg,#FFF2CC 0%,#FFF8E6 45%,#FDEFD0 100%)}
+.top{display:flex;align-items:center;gap:8px;padding:max(10px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left));max-width:1180px;width:100%;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.brandmark{width:44px;height:44px;flex:none}
+.brandname{font-size:20px;line-height:1.05}
+.brandsub{font-size:13px;color:var(--muted);font-weight:700}
+.tool{min-height:44px;min-width:44px;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink);font-size:16px;font-weight:600}
+.tool.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.starchip{min-height:44px;padding:0 14px;display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:#FFF0CF;border:2px solid var(--gold-deep);font-family:'Fredoka',sans-serif;font-size:18px;font-weight:600;color:#5E4300}
+.starchip .ico{fill:#FFC857;stroke:#E9A93A;stroke-width:1.6;width:22px;height:22px}
+.ico{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.prog{display:flex;gap:6px;padding:0 max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left));max-width:1180px;width:100%;margin:0 auto}
+.seg{flex:1;min-width:0;min-height:44px;background:none;border:0;padding:6px 0 0;display:flex;flex-direction:column;align-items:stretch;gap:6px;color:var(--muted);font-size:12px;font-weight:700}
+.segbar{display:block;height:10px;border-radius:99px;background:#EBD9A8}
+.seg.done .segbar{background:var(--leaf)}
+.seg.now .segbar{background:var(--hood)}
+.seg.now{color:var(--ink)}
+.segname{display:block;text-align:center;line-height:1}
+
+.stage{flex:1;width:100%;max-width:1180px;margin:0 auto;padding:12px max(16px,env(safe-area-inset-right)) 28px max(16px,env(safe-area-inset-left));outline:none}
+.split{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:stretch}
+.card{background:var(--card);border:3px solid var(--gold);border-radius:28px;box-shadow:0 6px 0 var(--gold-deep)}
+.visual{position:relative;overflow:hidden;background:var(--sky)}
+.scene{background:var(--skyc,#BDE8F5);height:clamp(270px,45vh,580px);height:clamp(270px,45dvh,580px)}
+.fill{position:absolute;inset:0;width:100%;height:100%;display:block}
+.panel{padding:22px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.panel>*{flex-shrink:0}
+@media (min-width:1500px){.top,.prog,.stage,.footin{max-width:1360px}}
+.eyerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.eyebrow{font-family:'Fredoka','Nunito',system-ui,sans-serif;font-size:14px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--hood)}
+.title{font-size:30px;line-height:1.12}
+.bigtitle{font-size:clamp(34px,4vw,54px);line-height:1;overflow-wrap:break-word}
+.split>*{min-width:0}
+.storytext{font-size:22px;line-height:1.5;font-weight:700}
+.lead{font-size:19px;line-height:1.5;font-weight:700}
+.hint{font-size:16px;line-height:1.5;color:var(--muted);font-weight:700}
+.lab{font-family:'Fredoka','Nunito',system-ui,sans-serif;font-size:18px;font-weight:600}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.dots{display:flex;gap:8px}
+.dot{width:12px;height:12px;border-radius:50%;background:#EBD9A8;display:block}
+.dot.on{background:var(--hood)}
+.pill{display:inline-flex;padding:6px 14px;border-radius:99px;background:#FFF0CF;border:2px solid var(--gold-deep);font-weight:800;font-size:14px;color:#5E4300}
+.tag{display:inline-block;align-self:flex-start;padding:4px 12px;border-radius:99px;background:#FFF0CF;border:2px solid var(--gold-deep);font-size:13px;font-weight:800;color:#5E4300}
+
+.btn{min-height:52px;padding:0 24px;border-radius:999px;border:0;background:var(--hood);color:#fff;font-size:19px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 5px 0 var(--hood-deep)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--hood-deep)}
+.btn.alt{background:var(--card);color:var(--ink);border:3px solid var(--line);box-shadow:0 5px 0 var(--line)}
+.btn.good{background:var(--leaf);box-shadow:0 5px 0 var(--leaf-deep)}
+.btn:disabled{opacity:.45;cursor:default;transform:none}
+.capbtn{min-height:44px;padding:0 14px;display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:2px solid var(--gold-deep);background:#FFF0CF;color:#5E4300;font-size:15px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:48px;padding:0 18px;border-radius:999px;border:3px solid var(--line);background:#fff;color:var(--ink);font-size:17px;font-weight:600}
+.chip.on{background:var(--leaf);border-color:var(--leaf);color:#fff}
+
+.foot{position:sticky;bottom:0;background:rgba(255,248,230,.95);border-top:3px solid var(--gold);z-index:5;padding-bottom:env(safe-area-inset-bottom)}
+.footin{max-width:1180px;margin:0 auto;padding:10px max(16px,env(safe-area-inset-right)) 10px max(16px,env(safe-area-inset-left));display:flex;align-items:center;gap:12px}
+.footmid{flex:1;text-align:center;font-size:14px;font-weight:800;color:var(--muted)}
+
+
+/* arte */
+.ol{stroke:#5B2E25;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.ol1{stroke:#5B2E25;stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.ols{fill:none;stroke:#5B2E25;stroke-opacity:.45;stroke-width:1.8;stroke-linecap:round}
+.brow{fill:none;stroke:#8A5A2B;stroke-width:3;stroke-linecap:round}
+.lash{fill:none;stroke:#1B1830;stroke-width:2.2;stroke-linecap:round}
+.drift{animation:driftx 38s ease-in-out infinite alternate}
+@keyframes driftx{from{transform:translateX(-14px)}to{transform:translateX(26px)}}
+.smoke{animation:smoke 4s ease-in-out infinite}
+@keyframes smoke{0%{opacity:.9;transform:translateY(0)}100%{opacity:.05;transform:translateY(-18px)}}
+.tw{animation:tw 3.2s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.2}50%{opacity:1}}
+.flap{transform-box:fill-box;transform-origin:50% 60%;animation:flap .5s ease-in-out infinite alternate}
+@keyframes flap{from{transform:scaleX(1)}to{transform:scaleX(.45)}}
+.swoosh{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;stroke-dasharray:46 34;animation:swoosh 1.6s linear infinite;opacity:.85}
+@keyframes swoosh{to{stroke-dashoffset:-160}}
+.heart{transform-box:fill-box;transform-origin:center;animation:rise 3s ease-in infinite}
+@keyframes rise{0%{transform:translateY(0) scale(.6);opacity:0}20%{opacity:1}100%{transform:translateY(-80px) scale(1.1);opacity:0}}
+.leafy{transform-box:fill-box;transform-origin:center;animation:sway 3.4s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+
+/* narradora e desafios */
+.coach{position:absolute;left:10px;right:10px;top:10px;display:flex;align-items:flex-start;gap:8px;z-index:3;pointer-events:none}
+.coach>*{pointer-events:auto}
+.coach.bottom{top:auto;bottom:10px;align-items:flex-end}
+.coach.bottom .cbub::before{top:auto;bottom:16px}
+.bird{width:50px;height:50px;flex:none;filter:drop-shadow(0 3px 0 rgba(43,37,64,.2));animation:hop 2.4s ease-in-out infinite}
+@keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.cbub{position:relative;background:#fff;border:3px solid var(--ink);border-radius:20px;padding:8px 12px 6px;max-width:min(100%,560px);box-shadow:0 4px 0 rgba(43,37,64,.18)}
+.cbub::before{content:"";position:absolute;left:-11px;top:16px;border:8px solid transparent;border-right:8px solid var(--ink);border-left:0}
+.cbub p{font-size:17px;font-weight:800;line-height:1.3}
+.cbub.ok{background:#E4F4DE;border-color:var(--leaf)}
+.cbub.warn{background:#FFF0CF;border-color:var(--gold-deep)}
+.crow{display:flex;align-items:center;gap:8px;margin-top:4px}
+.ccount{font-family:'Fredoka',sans-serif;font-weight:600;font-size:15px;color:var(--muted);margin-right:auto}
+.mini{min-height:44px;min-width:44px;border-radius:99px;border:2px solid var(--line);background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;padding:0 10px}
+.mini .ico{width:20px;height:20px}
+.hot{cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.hot .halo{fill:rgba(255,255,255,.28);stroke:#fff;stroke-width:5;stroke-dasharray:8 8;transform-box:fill-box;transform-origin:center;animation:hotpulse 1.6s ease-in-out infinite}
+.hot:focus-visible .halo{stroke:#2B2540;stroke-width:6}
+.hot.done{pointer-events:none}
+.hot.done .halo{display:none}
+@keyframes hotpulse{0%,100%{transform:scale(1);opacity:.95}50%{transform:scale(1.12);opacity:.55}}
+.shake{animation:shake .45s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+.blink{transform-box:fill-box;transform-origin:center;animation:blink 3.4s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.sgn{font-family:'Fredoka',sans-serif;font-weight:600;font-size:26px;text-anchor:middle;fill:#fff}
+.sgn.dk{fill:#2B2540}
+.snow{fill:none;stroke:#2B8FB8;stroke-width:4;stroke-linecap:round;transform-box:fill-box;transform-origin:center;animation:snowpop 1.5s ease-out forwards}
+@keyframes snowpop{0%{transform:scale(.2) rotate(0);opacity:0}25%{opacity:1}100%{transform:scale(1.3) rotate(120deg);opacity:0}}
+.shout-t{font-family:'Fredoka',sans-serif;font-weight:700;fill:#C9362B;stroke:#fff;stroke-width:7;paint-order:stroke;text-anchor:middle;transform-box:fill-box;transform-origin:center;animation:shoutpop 1s ease-out forwards}
+@keyframes shoutpop{0%{transform:scale(.3);opacity:0}25%{opacity:1;transform:scale(1.1)}100%{transform:translateY(-34px) scale(1.25);opacity:0}}
+.shout{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.shout .btn{font-size:24px;min-height:60px;padding:0 34px}
+.meter{display:flex;gap:8px}
+.mdot{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--ink)}
+.mdot.on{background:var(--hood)}
+
+.map{display:flex;align-items:flex-start;gap:0;margin:2px 0 4px}
+.stop{display:flex;flex-direction:column;align-items:center;gap:4px;flex:none;width:64px}
+.pin{width:26px;height:26px;border-radius:50%;background:#EBD9A8;border:3px solid var(--line);display:block}
+.stop.past .pin{background:var(--leaf);border-color:var(--leaf)}
+.stop.here .pin{background:var(--hood);border-color:var(--hood-deep);box-shadow:0 0 0 5px rgba(201,54,43,.25)}
+.sn{font-size:12px;font-weight:800;color:var(--muted);line-height:1}
+.stop.here .sn{color:var(--ink)}
+.road{flex:1;border-top:4px dotted #CFA84F;margin-top:11px;min-width:12px}
+
+/* fx */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:80;overflow:hidden}
+.toast{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;background:#fff;border:4px solid var(--gold-deep);border-radius:99px;padding:10px 24px 10px 14px;box-shadow:0 8px 0 rgba(43,37,64,.2);font-family:'Fredoka',sans-serif;font-size:30px;font-weight:600;animation:toastin 1.9s ease forwards;white-space:nowrap}
+.toast svg{width:44px;height:44px;fill:#FFC857;stroke:#E9A93A;stroke-width:1.6;stroke-linejoin:round;animation:spin 1.2s ease-out}
+@keyframes toastin{0%{transform:translate(-50%,-30%) scale(.5);opacity:0}15%{transform:translate(-50%,-50%) scale(1.08);opacity:1}25%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{transform:translate(-50%,-80%) scale(1);opacity:0}}
+@keyframes spin{from{transform:rotate(-200deg) scale(.3)}to{transform:rotate(0) scale(1)}}
+.conf{position:absolute;top:-16px;width:10px;height:14px;border-radius:2px;animation:fall 1.9s ease-in forwards}
+@keyframes fall{from{transform:translate3d(0,0,0) rotate(0)}to{transform:translate3d(var(--dx),108vh,0) rotate(600deg)}}
+
+/* quiz */
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;text-align:left;width:100%;min-height:60px;padding:10px 16px;border-radius:20px;border:3px solid var(--line);background:#fff;color:var(--ink);font-family:'Nunito',system-ui,sans-serif;font-size:19px;font-weight:700;line-height:1.3}
+.opt .let{flex:none;width:36px;height:36px;border-radius:50%;background:var(--paper);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-size:18px}
+.opt.sel{border-color:var(--ink);background:#FFF3C4}
+.opt.sel .let{background:var(--ink);color:#fff;border-color:var(--ink)}
+.opt.goodsel{border-color:var(--leaf);background:#E4F4DE}
+.opt.goodsel .let{background:var(--leaf);color:#fff;border-color:var(--leaf)}
+.fb{border-radius:20px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;background:#E4F4DE;border:3px solid var(--leaf);font-size:18px;font-weight:700;line-height:1.45}
+.fb.think{background:#FFF0CF;border-color:var(--gold-deep)}
+.fb .ico{margin-top:2px}
+#qfb{scroll-margin-bottom:110px}
+
+.bubble{position:absolute;top:7%;left:7%;right:7%;padding:16px 20px;background:#fff;border:4px solid var(--ink);border-radius:36px;text-align:center;z-index:2}
+.bubbletext{font-family:'Fredoka',sans-serif;font-size:clamp(20px,5vw,28px);font-weight:600;line-height:1.2}
+.tail{position:absolute;background:#fff;border:4px solid var(--ink);border-radius:50%}
+.t1{width:22px;height:22px;bottom:-34px;left:46%}
+.t2{width:12px;height:12px;bottom:-52px;left:44%}
+
+.bodyvis{display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(180deg,#DFF3F8,#BDE8F5)}
+.bodymap{position:relative;width:min(240px,56vw,34vh);width:min(240px,56vw,34dvh);aspect-ratio:1/2}
+.bodymap svg{position:absolute;inset:0;width:100%;height:100%}
+.limbk{fill:none;stroke:#4FA3A5;stroke-width:22;stroke-linecap:round}
+.zone{position:absolute;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;border:3px dashed var(--ink);background:rgba(255,255,255,.72);display:flex;align-items:center;justify-content:center;color:var(--ink);padding:0;font-size:14px;font-weight:600;line-height:1.1;animation:pulse 2s ease-in-out infinite}
+.zone.on{background:var(--hood);border-style:solid;border-color:#fff;color:#fff;animation:none}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.1)}}
+
+.fearvis{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;background:linear-gradient(180deg,#FFF3C4,#FFE08A)}
+.fearwrap{height:230px;display:flex;align-items:center;justify-content:center}
+.fear{border-radius:50%;transition:width .25s,height .25s,background .25s;box-shadow:inset -10px -12px 0 rgba(43,37,64,.14)}
+.slider{width:100%;height:44px;accent-color:var(--hood)}
+.readout{font-family:'Fredoka',sans-serif;font-size:28px;font-weight:600;text-align:center}
+
+.helpgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:12px}
+.helpcard{display:flex;align-items:center;gap:14px;text-align:left;min-height:72px;padding:12px 16px;border-radius:22px;border:3px solid var(--line);background:#fff;color:var(--ink);font-size:18px;font-weight:600;line-height:1.25}
+.helpcard .hic{flex:none;width:44px;height:44px;border-radius:50%;background:#FFF0CF;display:flex;align-items:center;justify-content:center}
+.helpcard.on{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.helpcard.on .hic{background:rgba(255,255,255,.2)}
+
+.breathbox{position:relative;display:flex;align-items:center;justify-content:center;min-height:360px;background:radial-gradient(circle at 50% 40%,#E6F6FA 0%,#BDE8F5 72%)}
+.orb{width:min(230px,56vw);height:min(230px,56vw);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:56px;transition:transform .25s linear,background .6s ease;box-shadow:0 0 0 14px rgba(255,255,255,.5),0 0 0 30px rgba(255,255,255,.28)}
+.orbicon{width:58%;height:58%}
+.handle{fill:none;stroke:#7A4A22;stroke-width:6;stroke-linecap:round}
+.orbtext{position:absolute;left:0;right:0;bottom:16px;text-align:center}
+.orbword{font-family:'Fredoka',sans-serif;font-size:36px;font-weight:600;line-height:1.1}
+.orbcount{font-size:22px;font-weight:800;color:var(--muted);min-height:28px}
+.cdots{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cdot{width:18px;height:18px;border-radius:50%;background:#EBD9A8;display:block}
+.cdot.on{background:var(--hood)}
+.cdot.done{background:var(--leaf)}
+.infobox{background:#FFF0CF;border:3px solid var(--gold-deep);border-radius:20px;padding:14px 16px;font-size:19px;font-weight:700;line-height:1.45}
+
+.posebox{background:linear-gradient(180deg,#8FD3F0,#E3F5F6)}
+.limb{fill:none;stroke:#2B2540;stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.torso{fill:none;stroke:#C9362B;stroke-width:26;stroke-linecap:round}
+.face-line{fill:none;stroke:#2B2540;stroke-width:2.5;stroke-linecap:round}
+.arrowline{fill:none;stroke:#1F5C3B;stroke-width:5;stroke-linecap:round;stroke-dasharray:2 10}
+.glass{fill:rgba(255,255,255,.35);stroke:#2B2540;stroke-width:2}
+.win{fill:none;stroke:#8A5A3C;stroke-width:3}
+.streak{fill:none;stroke:#fff;stroke-width:4;stroke-linecap:round;opacity:.6}
+.ringwrap{position:relative;width:110px;height:110px;flex:none}
+.ring{width:110px;height:110px;transform:rotate(-90deg)}
+.ringbg{fill:none;stroke:#EBD9A8;stroke-width:10}
+.ringfg{fill:none;stroke:var(--hood);stroke-width:10;stroke-linecap:round;stroke-dasharray:276.46;transition:stroke-dashoffset .25s linear}
+.ringnum{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-size:36px;font-weight:600}
+.pstep{min-height:40px;padding:0 14px;border-radius:99px;border:3px solid var(--line);background:#fff;display:inline-flex;align-items:center;font-size:15px;font-weight:800;color:var(--muted)}
+.pstep.on{border-color:var(--hood);color:var(--ink);background:#FFE9E5}
+.pstep.done{background:var(--leaf);border-color:var(--leaf);color:#fff}
+
+.stagebox{background:#CFE9C9;display:flex;align-items:flex-end;transition:background .3s}
+.stagesvg{width:100%;height:auto;display:block;aspect-ratio:8/5}
+.off{display:none}
+.ta{width:100%;min-height:120px;border-radius:20px;border:3px solid var(--line);padding:14px 16px;font-family:'Nunito',system-ui,sans-serif;font-size:19px;font-weight:700;color:var(--ink);background:#fff;resize:vertical;line-height:1.4}
+
+.pfhead{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.avatar{width:56px;height:56px;border-radius:50%;background:var(--hood);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-size:26px;font-weight:600;flex:none}
+.stars{display:flex;gap:4px}
+.star{width:38px;height:38px;fill:#E8DDB9;stroke:#CDB77A;stroke-width:1.5;stroke-linejoin:round}
+.star.on{fill:#FFC857;stroke:#E9A93A}
+.pfitem{display:flex;flex-direction:column;gap:6px;padding:14px 16px;border-radius:20px;background:#fff;border:3px solid var(--line)}
+.pftop{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.pftitle{font-family:'Fredoka',sans-serif;font-size:19px;font-weight:600}
+.stt{display:inline-flex;align-items:center;gap:6px;padding:3px 12px;border-radius:99px;font-size:13px;font-weight:800;background:#EFE6CF;color:#4A4260}
+.stt.done{background:var(--leaf);color:#fff}
+.stt.mid{background:#FFE08A;color:#5E4300}
+.stt .ico{width:16px;height:16px}
+.pfline{font-size:16px;font-weight:700;line-height:1.4}
+.rosterrow{display:flex;flex-direction:column;gap:6px}
+.bar{height:14px;border-radius:99px;background:#EBD9A8;overflow:hidden}
+.barfill{height:14px;border-radius:99px;background:var(--leaf);display:block}
+.barfill.me{background:var(--hood)}
+
+.scrim{position:fixed;inset:0;background:rgba(43,37,64,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:60}
+.scrim[hidden]{display:none}
+.sheet{max-width:560px;width:100%;max-height:88vh;max-height:88dvh;overflow:auto;padding:24px;display:flex;flex-direction:column;gap:14px}
+
+/* ===== responsivo ===== */
+@media (min-width:960px){
+.split.two{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px}
+.split.two:has(.scene){grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}
+.scene{height:auto;min-height:0;aspect-ratio:8/5;align-self:center}
+.panel{padding:28px}
+.storytext{font-size:24px}
+}
+@media (min-width:700px) and (max-width:959px){
+.panel{padding:26px}
+.storytext{font-size:24px}
+.title{font-size:34px}
+}
+@media (max-width:640px){
+.title{font-size:25px}
+.storytext{font-size:20px}
+.lead{font-size:18px}
+.panel{padding:18px}
+.brandname{font-size:16px}
+.brandsub{display:none}
+.lbl{display:none}
+.tool{padding:0 10px}
+.starchip{padding:0 10px}
+.btn{padding:0 18px;font-size:18px}
+.cbub p{font-size:16px}
+.bird{width:42px;height:42px}
+.breathbox,.posebox{min-height:310px}
+.toast{font-size:24px}
+.stop{width:56px}
+}
+@media (max-width:520px){
+.brand>div{display:none}
+.brand{flex:1}
+}
+@media (max-width:640px) and (orientation:portrait){
+.cbub{display:flex;align-items:center;gap:8px;padding:6px 8px 6px 12px}
+.cbub p{flex:1;font-size:15px;line-height:1.25}
+.crow{flex-direction:column;align-items:flex-end;gap:2px;margin:0}
+.ccount{margin:0;font-size:13px}
+.crow [data-act="speakc"]{display:none}
+}
+@media (max-width:420px){
+.fm1{display:none}
+.cbub p{font-size:15px}
+}
+@media (max-width:340px){
+.prog{gap:3px}
+}
+@media (max-width:380px){
+.btn{padding:0 14px;font-size:17px}
+.segname{font-size:11px}
+.cbub p{font-size:15px}
+}
+@media (orientation:landscape) and (max-height:540px){
+.top{padding-top:6px;padding-bottom:4px}
+.brandsub,.lbl{display:none}
+.seg{min-height:44px;padding-top:6px}
+.stop{width:48px}
+.sn{font-size:11px}
+.segname{display:none}
+.stage{padding-top:6px;padding-bottom:12px}
+.split{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:14px}
+.scene{height:calc(100vh - 156px);height:calc(100dvh - 156px);min-height:200px}
+.split>.panel{max-height:calc(100vh - 156px);max-height:calc(100dvh - 156px);overflow:auto}
+.footin{padding-top:6px;padding-bottom:6px}
+.btn{min-height:46px}
+.breathbox,.posebox{min-height:0}
+.bodymap{width:min(150px,30vh);width:min(150px,30dvh)}
+.coach{top:6px;left:6px;right:6px}
+.coach.bottom{top:auto;bottom:6px;right:auto;max-width:44%;align-items:flex-end}
+
+.bird{display:none}
+.cbub{padding:6px 10px 4px}
+.cbub::before{display:none}
+.cbub p{font-size:14px;line-height:1.25}
+.crow{margin-top:2px}
+.mini{min-height:44px;min-width:44px}
+.storytext{font-size:18px}
+.title{font-size:22px}
+.lead{font-size:16px}
+.panel{padding:14px;gap:10px}
+.bigtitle{font-size:34px}
+}
+@media (prefers-reduced-motion:reduce){
+*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs id="defs"></defs></svg>
+
+<div class="app" id="app">
+<header class="top">
+<div class="brand">
+<svg class="brandmark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#FFC857"/><circle cx="24" cy="26" r="11" fill="#F3C29A"/><path d="M11 28 Q11 8 24 8 Q37 8 37 28 Q31 19 24 19 Q17 19 11 28Z" fill="#C9362B"/><circle cx="20" cy="27" r="1.6" fill="#2B2540"/><circle cx="28" cy="27" r="1.6" fill="#2B2540"/></svg>
+<div><div class="brandname disp">Os Contos Dão Conta</div><div class="brandsub">Aprender para Ser</div></div>
+</div>
+<span class="starchip" id="starChip" role="status" aria-label="0 estrelinhas"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span id="starN">0</span></span>
+<button class="tool" id="bSpeak" aria-label="Ouvir a narração"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg><span class="lbl" id="speakLbl">Ouvir</span></button>
+<button class="tool" id="bGuide" aria-label="Orientação pedagógica" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg><span class="lbl">Orientação</span></button>
+<button class="tool" id="bRestart" aria-label="Recomeçar o protótipo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
+</header>
+<nav class="prog" id="prog" aria-label="Seções da aventura"></nav>
+<main class="stage" id="stage" tabindex="-1"></main>
+<footer class="foot"><div class="footin">
+<button class="btn alt" id="bPrev" aria-label="Voltar"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span class="lbl">Voltar</span></button>
+<div class="footmid" id="footMid"></div>
+<button class="btn" id="bNext"><span id="nextLbl">Continuar</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</div></footer>
+</div>
+
+<div class="scrim" id="guide" hidden>
+<div class="card sheet" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+<span class="tag">Texto de exemplo</span>
+<h2 class="title" id="guideTitle"></h2>
+<p class="lead" id="guideBody"></p>
+<p class="hint">Aqui entra a orientação oficial da especialista para esta atividade, em texto, áudio ou vídeo.</p>
+<button class="btn" id="guideClose">Entendi</button>
+</div>
+</div>
+<div id="fx"></div>
+<div class="sr" id="srStatus" aria-live="polite"></div>
+
+<script>
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ===================== ARTE (SVG gerado) ===================== */
+const ART = (() => {
+  const lg = (id, stops, d) => { d = d || [0, 0, 0, 1]; return '<linearGradient id="' + id + '" x1="' + d[0] + '" y1="' + d[1] + '" x2="' + d[2] + '" y2="' + d[3] + '">' + stops.map((s) => '<stop offset="' + s[0] + '" stop-color="' + s[1] + '"' + (s[2] !== undefined ? ' stop-opacity="' + s[2] + '"' : '') + '/>').join('') + '</linearGradient>'; };
+  const rg = (id, stops) => '<radialGradient id="' + id + '">' + stops.map((s) => '<stop offset="' + s[0] + '" stop-color="' + s[1] + '"' + (s[2] !== undefined ? ' stop-opacity="' + s[2] + '"' : '') + '/>').join('') + '</radialGradient>';
+  const use = (id, t, st) => '<use href="#' + id + '"' + (t ? ' transform="' + t + '"' : '') + (st ? ' style="' + st + '"' : '') + '/>';
+
+  const grads = [
+    lg('g-skin', [[0, '#FFE6CF'], [1, '#F1BE98']]), lg('g-skinD', [[0, '#F0CBAA'], [1, '#D6A07A']]),
+    rg('g-blush', [[0, '#FF8E9B', 0.7], [1, '#FF8E9B', 0]]),
+    lg('g-hair', [[0, '#FADA77'], [1, '#D49A2A']]), lg('g-brown', [[0, '#8F5E3E'], [1, '#573522']]), lg('g-gray', [[0, '#F4F2F8'], [1, '#BDB9CC']]),
+    lg('g-cape', [[0, '#F0594A'], [0.55, '#CB382D'], [1, '#9C231A']], [0, 0, 1, 1]), lg('g-capeD', [[0, '#B92B21'], [1, '#7A1912']]),
+    lg('g-dress', [[0, '#FCC2D2'], [1, '#EC86A4']]), lg('g-teal', [[0, '#5CB6C0'], [1, '#2D8591']]), lg('g-lilac', [[0, '#DECDF4'], [1, '#B297D8']]),
+    lg('g-shawl', [[0, '#A682D0'], [1, '#6C4A9C']]), lg('g-green', [[0, '#41905C'], [1, '#215837']]), lg('g-pants', [[0, '#715037'], [1, '#43301F']]),
+    lg('g-apron', [[0, '#FFFFFF'], [1, '#EBE2D6']]), lg('g-sock', [[0, '#FFFFFF'], [1, '#E4DEEA']]),
+    lg('g-shoe', [[0, '#B8743F'], [1, '#69391C']]), lg('g-basket', [[0, '#DB9E5A'], [1, '#97602E']]),
+    lg('g-wood', [[0, '#6A4126'], [0.5, '#AC7650'], [1, '#553420']], [0, 0, 1, 0]), lg('g-woodV', [[0, '#B98255'], [1, '#7A4C2B']]),
+    lg('g-fur', [[0, '#A2A7BA'], [1, '#575B6F']]), lg('g-furL', [[0, '#F1F2F8'], [1, '#C2C7D8']]),
+    lg('g-leafP', [[0, '#BAE794'], [1, '#86C96C']]), lg('g-leafL', [[0, '#A2DE78'], [1, '#5AB05F']]), lg('g-leafM', [[0, '#5EB466'], [1, '#2F8150']]),
+    lg('g-leafD', [[0, '#2F8150'], [1, '#1A5036']]), lg('g-leafN', [[0, '#26615A'], [1, '#10353A']]),
+    lg('g-skyDay', [[0, '#6EC5EE'], [1, '#E5F6F6']]), lg('g-skyMorn', [[0, '#86CDEB'], [0.7, '#D5F0F2'], [1, '#FFF0C8']]),
+    lg('g-skyForest', [[0, '#8FD3D1'], [0.7, '#DBF1D3'], [1, '#FFF4CC']]), lg('g-skyNight', [[0, '#0D1A3C'], [1, '#3C5898']]),
+    lg('g-hillFar', [[0, '#C6E9C8'], [1, '#9DD3A6']]), lg('g-hillMid', [[0, '#99D18C'], [1, '#6DB36C']]),
+    lg('g-ground', [[0, '#82C063'], [1, '#4B9247']]), lg('g-groundF', [[0, '#76B35B'], [1, '#3F8040']]), lg('g-groundN', [[0, '#1F4A4A'], [1, '#123238']]),
+    lg('g-path', [[0, '#F5E0AF'], [1, '#D9B678']]), lg('g-river', [[0, '#90D8F2'], [1, '#3F9FD0']]),
+    lg('g-ray', [[0, '#FFFFFF', 0.55], [1, '#FFFFFF', 0]]),
+    rg('g-sun', [[0, '#FFF8C8', 0.95], [0.4, '#FFF0A0', 0.45], [1, '#FFF0A0', 0]]), rg('g-moon', [[0, '#FFFBE0', 0.85], [1, '#FFFBE0', 0]]),
+    lg('g-cloud', [[0, '#FFFFFF'], [1, '#E7F2F8']]), lg('g-roof', [[0, '#E0503F'], [1, '#A52A20']]), lg('g-wall', [[0, '#FFF6DE'], [1, '#EEDBB4']]),
+    lg('g-mist', [[0, '#FFFFFF', 0], [0.5, '#FFFFFF', 0.5], [1, '#FFFFFF', 0]], [0, 0, 1, 0]),
+    lg('g-wallR', [[0, '#FFE9B8'], [1, '#F4CF8E']]), lg('g-floor', [[0, '#C98A4F'], [1, '#8F5A30']]), rg('g-lamp', [[0, '#FFE9A0', 0.7], [1, '#FFE9A0', 0]])
+  ].join('');
+
+  /* ---- natureza e props ---- */
+  const nat = [
+    '<g id="tuft"><path d="M0 0 Q-4 -14 -10 -22 Q-2 -12 0 0Z M0 0 Q2 -18 7 -28 Q4 -12 0 0Z M0 0 Q9 -12 15 -17 Q6 -8 0 0Z" fill="#4C9843"/></g>',
+    '<g id="fl"><path d="M0 0 Q1 -8 0 -14" stroke="#3E8A3E" stroke-width="2" fill="none"/><g transform="translate(0 -17)"><circle cx="0" cy="-5" r="4" fill="currentColor"/><circle cx="5" cy="-1.5" r="4" fill="currentColor"/><circle cx="3" cy="4" r="4" fill="currentColor"/><circle cx="-3" cy="4" r="4" fill="currentColor"/><circle cx="-5" cy="-1.5" r="4" fill="currentColor"/><circle r="2.8" fill="#FFD84A"/></g></g>',
+    '<g id="shroom"><path d="M-4 0 Q-5 -10 -3 -14 L3 -14 Q5 -10 4 0Z" fill="#F4E9D6" class="ol"/><path d="M-13 -14 Q0 -30 13 -14Z" fill="#D94A3C" class="ol"/><circle cx="-4" cy="-19" r="2" fill="#fff"/><circle cx="5" cy="-17" r="1.6" fill="#fff"/></g>',
+    '<g id="rock"><path d="M-22 0 Q-24 -16 -10 -20 Q6 -26 18 -14 Q26 -6 22 0Z" fill="#B9BCC8" class="ol"/><path d="M-10 -14 Q0 -20 8 -14" stroke="#fff" stroke-width="2" fill="none" opacity=".6"/></g>',
+    '<g id="cloud"><g class="drift"><ellipse cx="0" cy="0" rx="48" ry="15" fill="url(#g-cloud)"/><ellipse cx="-25" cy="-9" rx="25" ry="17" fill="url(#g-cloud)"/><ellipse cx="15" cy="-16" rx="30" ry="21" fill="url(#g-cloud)"/><ellipse cx="38" cy="-4" rx="18" ry="11" fill="url(#g-cloud)"/></g></g>',
+    '<g id="bird"><path d="M22 11 Q24 4 29 8 Q26 12 22 11Z" fill="#E9A93A"/><circle cx="24" cy="26" r="16" fill="#FFC857"/><ellipse cx="24" cy="32" rx="10" ry="8" fill="#FFF0CF"/><path d="M37 24 L47 27 L37 30Z" fill="#E9722B"/><circle cx="30" cy="22" r="3.4" fill="#2B2540"/><circle cx="31" cy="21" r="1.1" fill="#fff"/><path d="M9 26 Q17 17 22 30 Q14 35 9 26Z" fill="#F2A33A"/><path d="M20 42 V46 M28 42 V46" stroke="#E9722B" stroke-width="3" stroke-linecap="round"/></g>'
+  ].join('');
+
+  const foliage = (m, l, d) => '<ellipse cx="0" cy="-70" rx="58" ry="16" fill="url(#' + d + ')" opacity=".5"/>' +
+    '<circle cx="-44" cy="-98" r="40" fill="url(#' + m + ')"/><circle cx="44" cy="-98" r="40" fill="url(#' + m + ')"/><circle cx="0" cy="-128" r="58" fill="url(#' + m + ')"/>' +
+    '<circle cx="-24" cy="-160" r="34" fill="url(#' + m + ')"/><circle cx="30" cy="-156" r="32" fill="url(#' + m + ')"/>' +
+    '<circle cx="-26" cy="-146" r="30" fill="url(#' + l + ')" opacity=".8"/><circle cx="-52" cy="-110" r="20" fill="url(#' + l + ')" opacity=".75"/><circle cx="10" cy="-172" r="20" fill="url(#' + l + ')" opacity=".75"/>' +
+    '<path d="M-32 -88 Q-10 -76 10 -86 Q32 -76 54 -92 Q42 -66 0 -64 Q-42 -66 -32 -88Z" fill="url(#' + d + ')" opacity=".55"/>' +
+    '<circle cx="18" cy="-120" r="3" fill="url(#' + l + ')"/><circle cx="-36" cy="-84" r="3" fill="url(#' + l + ')"/><circle cx="44" cy="-84" r="3" fill="url(#' + l + ')"/>';
+  const tree = (id, m, l, d) => '<g id="' + id + '"><path d="M-15 0 Q-12 -46 -8 -98 L8 -98 Q12 -46 15 0 Q0 7 -15 0Z" fill="url(#g-wood)" class="ol"/><path d="M-5 -6 Q-3 -40 -6 -88 M5 -10 Q4 -44 6 -82" class="ols"/><path d="M-15 0 Q-26 5 -36 3 M15 0 Q26 5 36 3" class="ol" fill="none"/>' + foliage(m, l, d) + '</g>';
+  const trees = tree('tree-a', 'g-leafM', 'g-leafL', 'g-leafD') + tree('tree-b', 'g-leafD', 'g-leafM', 'g-leafD') + tree('tree-c', 'g-leafP', 'g-leafP', 'g-leafL') + tree('tree-n', 'g-leafN', 'g-leafM', 'g-leafN');
+
+  /* ---- animais ---- */
+  const animals = [
+    '<g id="an-rabbit"><ellipse cx="0" cy="2" rx="24" ry="4" fill="#2B2540" opacity=".12"/><circle cx="-20" cy="-14" r="6" fill="#fff" class="ol"/><ellipse cx="0" cy="-16" rx="19" ry="15" fill="url(#g-furL)" class="ol"/><ellipse cx="10" cy="-2" rx="11" ry="4" fill="url(#g-furL)" class="ol"/><path d="M6 -38 Q0 -64 8 -66 Q16 -64 14 -38Z" fill="url(#g-furL)" class="ol"/><path d="M12 -38 Q10 -60 18 -60 Q24 -56 18 -37Z" fill="url(#g-furL)" class="ol"/><path d="M8 -40 Q5 -58 9 -60 Q13 -56 12 -40Z" fill="#F4A9B8"/><circle cx="12" cy="-32" r="11" fill="url(#g-furL)" class="ol"/><circle cx="16" cy="-34" r="2.4" fill="#2B2540"/><circle cx="16.8" cy="-34.8" r=".8" fill="#fff"/><ellipse cx="22" cy="-30" rx="2.4" ry="1.8" fill="#F08AA0"/><path d="M20 -28 Q16 -25 12 -27" class="face-line"/></g>',
+    '<g id="an-squirrel"><ellipse cx="0" cy="2" rx="22" ry="4" fill="#2B2540" opacity=".12"/><path d="M-6 -10 Q-34 -14 -30 -44 Q-26 -66 -10 -56 Q-24 -46 -16 -30 Q-8 -22 4 -22Z" fill="#E88A3B" class="ol"/><path d="M-26 -50 Q-22 -60 -14 -56" stroke="#F8C48A" stroke-width="3" fill="none"/><ellipse cx="2" cy="-18" rx="14" ry="16" fill="#E88A3B" class="ol"/><ellipse cx="6" cy="-14" rx="8" ry="10" fill="#FBE0B8"/><circle cx="8" cy="-38" r="11" fill="#E88A3B" class="ol"/><path d="M2 -46 L0 -56 L9 -48Z M14 -46 L18 -55 L19 -44Z" fill="#E88A3B" class="ol"/><circle cx="12" cy="-40" r="2.4" fill="#2B2540"/><ellipse cx="18" cy="-35" rx="3" ry="2.2" fill="#3A2420"/><circle cx="14" cy="-24" r="6" fill="#B9793F" class="ol"/><path d="M11 -28 Q14 -32 17 -28Z" fill="#7A4A22"/></g>',
+    '<g id="an-owl"><ellipse cx="0" cy="-22" rx="20" ry="24" fill="#9A6B45" class="ol"/><ellipse cx="0" cy="-16" rx="12" ry="16" fill="#E8C9A0"/><path d="M-16 -42 L-22 -56 L-6 -46Z M16 -42 L22 -56 L6 -46Z" fill="#9A6B45" class="ol"/><circle cx="-8" cy="-32" r="8" fill="#fff" class="ol"/><circle cx="8" cy="-32" r="8" fill="#fff" class="ol"/><circle cx="-7" cy="-31" r="4.2" fill="#2B2540"/><circle cx="9" cy="-31" r="4.2" fill="#2B2540"/><circle cx="-6" cy="-32.5" r="1.3" fill="#fff"/><circle cx="10" cy="-32.5" r="1.3" fill="#fff"/><path d="M-3 -26 L0 -20 L3 -26Z" fill="#F2A33A"/><path d="M-12 -10 L-10 -4 M0 -8 V-2 M10 -10 L12 -4" stroke="#B98A60" stroke-width="2"/><path d="M-10 2 H10" stroke="#5A3A24" stroke-width="3" stroke-linecap="round"/></g>',
+    '<g id="an-frog"><ellipse cx="0" cy="-8" rx="17" ry="11" fill="#6FC25A" class="ol"/><ellipse cx="0" cy="-5" rx="11" ry="6" fill="#C8EBA0"/><circle cx="-9" cy="-19" r="6" fill="#6FC25A" class="ol"/><circle cx="9" cy="-19" r="6" fill="#6FC25A" class="ol"/><circle cx="-9" cy="-19" r="3.4" fill="#fff"/><circle cx="9" cy="-19" r="3.4" fill="#fff"/><circle cx="-8.5" cy="-18.5" r="1.8" fill="#2B2540"/><circle cx="9.5" cy="-18.5" r="1.8" fill="#2B2540"/><path d="M-7 -9 Q0 -4 7 -9" class="face-line"/><path d="M-14 -2 Q-22 0 -20 3 M14 -2 Q22 0 20 3" stroke="#4E9F40" stroke-width="3" fill="none" stroke-linecap="round"/></g>',
+    '<g id="an-dove"><ellipse cx="0" cy="-12" rx="18" ry="12" fill="#fff" class="ol"/><circle cx="14" cy="-22" r="8" fill="#fff" class="ol"/><path d="M21 -23 L28 -21 L21 -19Z" fill="#F2A33A"/><circle cx="16" cy="-24" r="1.8" fill="#2B2540"/><path d="M-4 -14 Q-18 -26 -26 -10 Q-14 -6 -4 -10Z" fill="#E6EEF8" class="ol"/><path d="M-16 -10 L-26 -2 L-12 -4Z" fill="#fff" class="ol"/></g>',
+    '<g id="an-butterfly"><g class="flap"><path d="M0 0 Q-16 -18 -22 -6 Q-20 8 0 2Z" fill="#F29AC0" class="ol"/><path d="M0 0 Q16 -18 22 -6 Q20 8 0 2Z" fill="#F7C45E" class="ol"/><circle cx="-12" cy="-4" r="3" fill="#fff" opacity=".8"/><circle cx="12" cy="-4" r="3" fill="#fff" opacity=".8"/></g><path d="M0 -4 V8" stroke="#5B2E25" stroke-width="2"/></g>'
+  ].join('');
+
+  /* ---- pessoas (rig articulado) ---- */
+  const rigT = (p, sx) => {
+    sx = sx || 30;
+    const a = (k) => (p[k] || 0);
+    return {
+      root: 'translate(' + a('x') + ' ' + a('y') + ')', torso: 'rotate(' + a('t') + ' 0 -168)', head: 'rotate(' + a('h') + ' 0 -258)',
+      armL: 'translate(' + (-sx) + ' -238) rotate(' + a('aL') + ')', foreL: 'translate(0 50) rotate(' + a('eL') + ')',
+      armR: 'translate(' + sx + ' -238) rotate(' + a('aR') + ')', foreR: 'translate(0 50) rotate(' + a('eR') + ')',
+      legL: 'translate(-16 -160) rotate(' + a('lL') + ')', shinL: 'translate(0 72) rotate(' + a('kL') + ')',
+      legR: 'translate(16 -160) rotate(' + a('lR') + ')', shinR: 'translate(0 72) rotate(' + a('kR') + ')'
+    };
+  };
+  const IDLE = { aL: 6, eL: -4, aR: -8, eR: 4, lL: 1, lR: -1 };
+
+  const basketG = '<g transform="translate(0 62)"><path d="M-19 8 Q0 -26 19 8" fill="none" stroke="#7A4A22" stroke-width="4" stroke-linecap="round"/><path d="M-25 6 L25 6 L19 40 Q0 46 -19 40Z" fill="url(#g-basket)" class="ol"/><path d="M-23 16 H23 M-21 26 H21 M-19 35 H19 M-12 6 L-9 42 M0 6 V44 M12 6 L9 42" class="ols"/><circle cx="-10" cy="3" r="9" fill="#D93A30" class="ol"/><ellipse cx="9" cy="2" rx="12" ry="8" fill="#E3B06A" class="ol"/><path d="M-26 8 Q-12 -4 0 4 Q12 -4 26 8 L23 14 L-23 14Z" fill="#FFF3EE" class="ol"/><path d="M-14 8 V13 M-4 7 V13 M6 7 V13 M16 8 V13" stroke="#D93A30" stroke-width="3"/></g>';
+
+  const face = (c) => {
+    const ex = c.expr || 'happy';
+    const brows = ex === 'worry' ? '<path d="M-16 -9 Q-10 -14 -4 -18" class="brow"/><path d="M16 -9 Q10 -14 4 -18" class="brow"/>' : '<path d="M-15 -13 Q-9 -17 -3 -14" class="brow"/><path d="M15 -13 Q9 -17 3 -14" class="brow"/>';
+    const eyes = ex === 'closed' ? '<path d="M-14 -3 Q-9 2 -4 -3" class="face-line"/><path d="M14 -3 Q9 2 4 -3" class="face-line"/>' :
+      '<ellipse cx="-9.5" cy="-3" rx="6" ry="7" fill="#fff" class="ol1"/><ellipse cx="9.5" cy="-3" rx="6" ry="7" fill="#fff" class="ol1"/>' +
+      '<circle cx="-9" cy="-2.5" r="4.4" fill="' + (c.eye || '#3B86C6') + '"/><circle cx="10" cy="-2.5" r="4.4" fill="' + (c.eye || '#3B86C6') + '"/>' +
+      '<circle cx="-9" cy="-2.5" r="2.2" fill="#1B1830"/><circle cx="10" cy="-2.5" r="2.2" fill="#1B1830"/>' +
+      '<circle cx="-10.6" cy="-4.6" r="1.5" fill="#fff"/><circle cx="8.4" cy="-4.6" r="1.5" fill="#fff"/><circle cx="-7.6" cy="-0.6" r=".8" fill="#fff"/><circle cx="11.4" cy="-0.6" r=".8" fill="#fff"/>' +
+      '<path d="M-16 -4 Q-9.5 -12 -3 -5" class="lash"/><path d="M16 -4 Q9.5 -12 3 -5" class="lash"/>';
+    const mouth = ex === 'worry' ? '<path d="M-5 19 Q0 15.5 5 19" class="face-line"/>' :
+      ex === 'shout' ? '<ellipse cx="0" cy="18" rx="6.5" ry="8" fill="#8E2B2B" class="ol1"/><ellipse cx="0" cy="22" rx="3.6" ry="2.6" fill="#E8707A"/>' :
+        '<path d="M-8 15 Q0 25 8 15 Q0 19 -8 15Z" fill="#C85A5A" class="ol1"/>';
+    return '<ellipse cx="-16" cy="9" rx="8" ry="6" fill="url(#g-blush)"/><ellipse cx="16" cy="9" rx="8" ry="6" fill="url(#g-blush)"/>' + brows + eyes +
+      '<path d="M-1.5 6 Q0 10 3 8" class="face-line" opacity=".7"/>' + mouth + (c.glasses ? '<circle cx="-9.5" cy="-3" r="8.5" class="glass"/><circle cx="9.5" cy="-3" r="8.5" class="glass"/><path d="M-1 -3 H1" class="glass"/>' : '');
+  };
+
+  const hairBack = (c) => c.hair === 'braids' ? '<path d="M-31 4 Q-35 -38 0 -42 Q35 -38 31 4 Q32 26 22 42 L-22 42 Q-32 26 -31 4Z" fill="url(#g-hair)" class="ol1"/>' :
+    c.hair === 'hat' ? '' : '<path d="M-28 2 Q-31 -38 0 -42 Q31 -38 28 2 Q28 24 18 36 L-18 36 Q-28 24 -28 2Z" fill="url(#' + (c.hairG || 'g-brown') + ')" class="ol1"/>';
+  const headMarkup = (c) => {
+    let s = '';
+    if (c.cape) { s += '<path d="M-38 16 Q-44 -48 0 -54 Q44 -48 38 16 Q36 40 24 48 L-24 48 Q-36 40 -38 16Z" fill="url(#g-capeD)" class="ol"/>'; }
+    s += hairBack(c);
+    s += '<rect x="-8" y="22" width="16" height="16" fill="url(#' + (c.sk || 'g-skin') + ')"/>';
+    s += '<path d="M-23 -6 Q-23 -31 0 -32 Q23 -31 23 -6 Q23 24 0 31 Q-23 24 -23 -6Z" fill="url(#' + (c.sk || 'g-skin') + ')" class="ol"/>';
+    s += face(c);
+    if (c.hair === 'braids') { s += '<path d="M-24 -10 Q-22 -35 0 -37 Q22 -35 24 -10 Q18 -26 6 -23 Q0 -14 -8 -25 Q-18 -22 -24 -10Z" fill="url(#g-hair)" class="ol1"/>'; }
+    else if (c.hair === 'bun') { s += '<path d="M-25 -8 Q-27 -42 0 -44 Q27 -42 25 -8 Q18 -28 0 -28 Q-18 -28 -25 -8Z" fill="url(#' + (c.hairG || 'g-brown') + ')" class="ol1"/><circle cx="0" cy="-50" r="12" fill="url(#' + (c.hairG || 'g-brown') + ')" class="ol1"/>'; }
+    if (c.hair === 'hat') {
+      s += '<path d="M-24 -10 Q-24 -30 0 -32 Q24 -30 24 -10 L24 -2 Q10 -14 0 -14 Q-10 -14 -24 -2Z" fill="url(#g-brown)" class="ol1"/>';
+      s += '<path d="M-22 14 Q0 54 22 14 Q12 30 0 30 Q-12 30 -22 14Z" fill="url(#g-brown)" class="ol1"/><path d="M-9 16 Q0 22 9 16" class="face-line" opacity=".0"/>';
+      s += '<ellipse cx="0" cy="-26" rx="38" ry="8" fill="url(#g-green)" class="ol"/><path d="M-24 -26 Q-22 -58 0 -60 Q22 -58 24 -26Z" fill="url(#g-green)" class="ol"/><path d="M-24 -30 Q0 -22 24 -30 L24 -26 Q0 -18 -24 -26Z" fill="#8A5A3C"/><path d="M14 -52 Q34 -78 46 -64 Q34 -56 18 -44Z" fill="#C9362B" class="ol"/>';
+    }
+    if (c.cape) {
+      s += '<path d="M-40 14 Q-46 -52 0 -58 Q46 -52 40 14 Q38 -10 30 -26 Q14 -42 0 -42 Q-14 -42 -30 -26 Q-38 -10 -40 14Z" fill="url(#g-cape)" class="ol"/>';
+      s += '<path d="M-40 14 Q-46 42 -34 58 L-20 52 Q-30 34 -28 14Z" fill="url(#g-cape)" class="ol"/><path d="M40 14 Q46 42 34 58 L20 52 Q30 34 28 14Z" fill="url(#g-cape)" class="ol"/>';
+      s += '<path d="M-28 -34 Q-12 -46 0 -45" class="ols" style="stroke:#FF9A8C;stroke-opacity:.7"/>';
+    }
+    if (c.hair === 'braids') {
+      [-1, 1].forEach((d) => {
+        s += '<g transform="translate(' + (d * 30) + ' 30)">' + [0, 17, 34, 51].map((y, i) => '<ellipse cx="' + (d * (i % 2 ? -1.5 : 1.5)) + '" cy="' + (y + 8) + '" rx="8" ry="10" fill="url(#g-hair)" class="ol1"/>').join('') + '<path d="M-11 66 L0 60 L11 66 L8 76 L-8 76Z" fill="#E0463A" class="ol1"/></g>';
+      });
+    }
+    return s;
+  };
+
+  const humanoid = (c, pose) => {
+    const sx = c.sx || 30; const T = rigT(Object.assign({}, IDLE, pose || {}), sx); const sk = c.sk || 'g-skin';
+    const slv = c.sleeveG || sk;
+    const arm = (side) => {
+      const L = side === 'L'; const long = !!c.longSleeve; const th = L ? -6 : 6;
+      return '<g class="p-arm' + side + '" transform="' + T['arm' + side] + '">' +
+        '<path d="M-7 6 Q-8 30 -6.5 52 L6.5 52 Q8 30 7 6Z" fill="url(#' + (long ? slv : sk) + ')" class="ol"/>' +
+        '<g class="p-fore' + side + '" transform="' + T['fore' + side] + '">' +
+        '<path d="M-6.5 0 Q-7.5 24 -5 46 L5 46 Q7.5 24 6.5 0Z" fill="url(#' + (long ? slv : sk) + ')" class="ol"/>' +
+        ((!L && c.basket) ? basketG : '') +
+        '<ellipse cx="0" cy="55" rx="7" ry="9.5" fill="url(#' + sk + ')" class="ol"/><ellipse cx="' + th + '" cy="50" rx="2.6" ry="5.4" fill="url(#' + sk + ')" class="ol" transform="rotate(' + (L ? 20 : -20) + ' ' + th + ' 50)"/></g>' +
+        '<ellipse cx="0" cy="6" rx="' + (c.puff ? 13 : 10.5) + '" ry="' + (c.puff ? 14 : 12) + '" fill="url(#' + slv + ')" class="ol"/></g>';
+    };
+    const leg = (side) => {
+      const male = !!c.male;
+      return '<g class="p-leg' + side + '" transform="' + T['leg' + side] + '">' +
+        (male ? '<path d="M-11 0 Q-13 36 -10 72 L10 72 Q13 36 11 0Z" fill="url(#g-pants)" class="ol"/>' : '<path d="M-10 0 Q-11 36 -8 72 L8 72 Q11 36 10 0Z" fill="url(#' + (c.legSk || sk) + ')" class="ol"/>') +
+        '<g class="p-shin' + side + '" transform="' + T['shin' + side] + '">' +
+        (male ? '<path d="M-10 0 Q-11 40 -8 70 L8 70 Q11 40 10 0Z" fill="url(#g-pants)" class="ol"/><path d="M-11 60 L11 60 L13 84 Q14 90 8 90 L-12 90 Q-17 84 -11 60Z" fill="url(#g-shoe)" class="ol"/>' :
+          (c.sock ? '<path d="M-8.5 0 Q-10 42 -6.5 70 L6.5 70 Q10 42 8.5 0Z" fill="url(#g-sock)" class="ol"/><path d="M-8.8 6 L8.8 6 L9.2 13 L-9.2 13Z" fill="#E0463A"/>' : '<path d="M-8.5 0 Q-10 42 -6.5 70 L6.5 70 Q10 42 8.5 0Z" fill="url(#' + (c.legSk || sk) + ')" class="ol"/>') +
+          '<path d="M-10 64 L10 64 Q16 74 15 84 Q14 90 8 90 L-12 90 Q-17 80 -10 64Z" fill="url(#g-shoe)" class="ol"/><path d="M-9 72 Q0 76 10 72" fill="none" stroke="#3E2010" stroke-width="2"/><path d="M-10 86 H12" stroke="#FFD7A8" stroke-width="2" opacity=".5"/>') +
+        '</g></g>';
+    };
+    const skirtPath = (hem, w, g) => '<path d="M-24 -184 Q' + (-w + 6) + ' ' + ((-184 + hem) / 2) + ' ' + (-w) + ' ' + (hem + 4) + ' Q' + (-w / 2) + ' ' + (hem + 14) + ' 0 ' + (hem + 3) + ' Q' + (w / 2) + ' ' + (hem + 14) + ' ' + w + ' ' + (hem + 4) + ' Q' + (w - 6) + ' ' + ((-184 + hem) / 2) + ' 24 -184Z" fill="url(#' + g + ')" class="ol"/>';
+    let s = '<g class="p-root" transform="' + T.root + '">' + (c.cape ? '<g class="p-capeback" transform="' + T.torso + '"><path d="M-36 -248 Q-70 -176 -64 -84 Q0 -64 64 -84 Q70 -176 36 -248Z" fill="url(#g-capeD)" class="ol"/><path d="M-30 -230 Q-50 -150 -46 -92 M30 -230 Q50 -150 46 -92" class="ols" style="stroke:#4E0E09"/></g>' : '') + leg('L') + leg('R');
+    if (c.male) {
+      s += '<path d="M-26 -190 L26 -190 L30 -150 Q0 -140 -30 -150Z" fill="url(#g-pants)" class="ol"/>';
+    } else {
+      if (c.hem < -60) { s += '<path d="M' + (-c.w - 4) + ' ' + (c.hem + 2) + ' Q' + (-c.w / 2) + ' ' + (c.hem + 20) + ' 0 ' + (c.hem + 8) + ' Q' + (c.w / 2) + ' ' + (c.hem + 20) + ' ' + (c.w + 4) + ' ' + (c.hem + 2) + ' L' + (c.w) + ' ' + (c.hem + 12) + ' Q' + (c.w / 2) + ' ' + (c.hem + 26) + ' 0 ' + (c.hem + 16) + ' Q' + (-c.w / 2) + ' ' + (c.hem + 26) + ' ' + (-c.w) + ' ' + (c.hem + 12) + 'Z" fill="url(#g-apron)" class="ol"/>'; }
+      s += skirtPath(c.hem, c.w, c.skirt);
+      if (c.apron) { s += '<path d="M-19 -184 L-31 ' + (c.hem + 6) + ' Q0 ' + (c.hem + 22) + ' 31 ' + (c.hem + 6) + ' L19 -184Z" fill="url(#g-apron)" class="ol"/><path d="M-30 ' + (c.hem + 8) + ' Q-22 ' + (c.hem + 16) + ' -15 ' + (c.hem + 12) + ' Q-7 ' + (c.hem + 20) + ' 0 ' + (c.hem + 14) + ' Q8 ' + (c.hem + 20) + ' 15 ' + (c.hem + 12) + ' Q22 ' + (c.hem + 16) + ' 30 ' + (c.hem + 8) + '" class="ols"/>'; }
+    }
+    s += '<g class="p-torso" transform="' + T.torso + '">';
+    if (c.shawl) { s += '<path d="M-34 -248 Q-56 -190 -50 -150 Q0 -134 50 -150 Q56 -190 34 -248Z" fill="url(#g-shawl)" class="ol"/>'; }
+    if (c.male) {
+      s += '<path d="M-36 -242 Q-44 -204 -38 -150 L38 -150 Q44 -204 36 -242 Q0 -256 -36 -242Z" fill="url(#' + c.top + ')" class="ol"/><rect x="-37" y="-176" width="74" height="10" fill="url(#g-pants)" class="ol"/><rect x="-6" y="-179" width="12" height="16" fill="#E3B65A" class="ol"/><path d="M0 -242 V-166" class="ols"/><path d="M-14 -246 L0 -228 L14 -246" fill="#F4E9D6" class="ol"/>';
+    } else {
+      s += '<path d="M-25 -186 Q-29 -214 -27 -240 Q0 -252 27 -240 Q29 -214 25 -186Z" fill="url(#' + c.top + ')" class="ol"/>';
+      if (c.apron) { s += '<path d="M-13 -224 L-17 -188 L17 -188 L13 -224Z" fill="url(#g-apron)" class="ol"/><rect x="-26" y="-190" width="52" height="9" fill="#D8453A" class="ol"/>'; }
+      s += '<path d="M-16 -248 Q0 -236 16 -248 Q12 -233 0 -229 Q-12 -233 -16 -248Z" fill="url(#g-apron)" class="ol"/>';
+    }
+    if (c.cape) {
+      s += '<path d="M-40 -244 Q-60 -170 -56 -92 Q-44 -88 -37 -94 Q-40 -170 -31 -230Z" fill="url(#g-cape)" class="ol"/><path d="M40 -244 Q60 -170 56 -92 Q44 -88 37 -94 Q40 -170 31 -230Z" fill="url(#g-cape)" class="ol"/>';
+      s += '<path d="M-48 -200 Q-52 -150 -50 -108 M48 -200 Q52 -150 50 -108" class="ols" style="stroke:#7A1912"/>';
+      s += '<path d="M-42 -252 Q0 -278 42 -252 Q52 -234 48 -214 Q0 -236 -48 -214 Q-52 -234 -42 -252Z" fill="url(#g-cape)" class="ol"/><circle cx="0" cy="-236" r="4.5" fill="#F2C14E" class="ol1"/><path d="M-4 -234 L-9 -222 M4 -234 L9 -222" stroke="#C9362B" stroke-width="3" stroke-linecap="round"/>';
+    }
+    s += arm('L') + arm('R');
+    s += '<g class="p-head" transform="' + T.head + '"><g transform="translate(0 -290)">' + headMarkup(c) + '</g></g>';
+    s += '</g></g>';
+    return s;
+  };
+
+  const CFG = {
+    chapeu: { sk: 'g-skin', cape: true, hair: 'braids', top: 'g-dress', skirt: 'g-dress', hem: -96, w: 62, apron: true, puff: true, sleeveG: 'g-apron', sock: true, basket: true, sx: 30 },
+    mama: { sk: 'g-skin', hair: 'bun', hairG: 'g-brown', top: 'g-teal', skirt: 'g-teal', hem: -88, w: 58, apron: true, puff: false, sleeveG: 'g-teal', eye: '#5A8A5A', sx: 30 },
+    vovo: { sk: 'g-skinD', hair: 'bun', hairG: 'g-gray', top: 'g-lilac', skirt: 'g-lilac', hem: -46, w: 56, shawl: true, sleeveG: 'g-shawl', longSleeve: true, glasses: true, eye: '#6B8FB5', sx: 28 },
+    cacador: { male: true, sk: 'g-skinD', hair: 'hat', top: 'g-green', sleeveG: 'g-green', longSleeve: true, eye: '#5B4630', sx: 37 }
+  };
+  const person = (id, cfg, scale, pose) => '<g id="' + id + '"><ellipse cx="0" cy="2" rx="36" ry="6" fill="#2B2540" opacity=".14"/><g transform="scale(' + scale + ')">' + humanoid(cfg, pose) + '</g></g>';
+  const people = person('char-chapeu', CFG.chapeu, 0.5) + person('char-chapeu-w', Object.assign({}, CFG.chapeu, { expr: 'worry' }), 0.5) + person('char-chapeu-s', Object.assign({}, CFG.chapeu, { expr: 'shout', basket: false }), 0.5, { aL: 24, eL: -112, aR: -24, eR: 112 }) +
+    person('char-mama', CFG.mama, 0.5) + person('char-vovo', CFG.vovo, 0.47) + person('char-cacador', CFG.cacador, 0.54);
+
+  /* ---- lobo ---- */
+  const wolfHead = '<g id="wolf-head"><path d="M-27 -14 L-39 -54 L-8 -30Z" fill="url(#g-fur)" class="ol"/><path d="M27 -14 L39 -54 L8 -30Z" fill="url(#g-fur)" class="ol"/><path d="M-25 -22 L-32 -46 L-14 -30Z" fill="#EAA0AA"/><path d="M25 -22 L32 -46 L14 -30Z" fill="#EAA0AA"/>' +
+    '<path d="M-32 -2 L-42 6 L-31 9 L-38 19 L-25 20Z M32 -2 L42 6 L31 9 L38 19 L25 20Z" fill="url(#g-fur)" class="ol1"/>' +
+    '<ellipse cx="0" cy="0" rx="32" ry="27" fill="url(#g-fur)" class="ol"/><path d="M-20 -22 Q-10 -30 0 -24 Q10 -30 20 -22" class="ols"/>' +
+    '<path d="M-17 5 Q0 -3 17 5 Q23 19 10 25 Q0 29 -10 25 Q-23 19 -17 5Z" fill="url(#g-furL)" class="ol1"/>' +
+    '<ellipse cx="0" cy="3" rx="7.5" ry="5" fill="#1B1830"/><ellipse cx="-2" cy="1.5" rx="2.4" ry="1.3" fill="#fff" opacity=".7"/>' +
+    '<path d="M-21 -9 Q-13 -17 -5 -9 Q-13 -4 -21 -9Z" fill="#FFD84A" class="ol1"/><path d="M21 -9 Q13 -17 5 -9 Q13 -4 21 -9Z" fill="#FFD84A" class="ol1"/><ellipse cx="-13" cy="-9.5" rx="1.7" ry="4" fill="#1B1830"/><ellipse cx="13" cy="-9.5" rx="1.7" ry="4" fill="#1B1830"/>' +
+    '<path d="M-23 -17 L-6 -12 M23 -17 L6 -12" stroke="#2B2D3A" stroke-width="4" stroke-linecap="round"/><path d="M-10 14 Q0 21 10 14" class="face-line"/><path d="M-7 16 L-5 22 L-2 17Z M2 17 L5 22 L7 16Z" fill="#fff" class="ol1"/></g>';
+  const wolfBody = '<g id="char-lobo"><ellipse cx="0" cy="2" rx="44" ry="7" fill="#2B2540" opacity=".14"/>' +
+    '<path d="M30 -64 Q84 -76 70 -124 Q58 -88 28 -90Z" fill="url(#g-fur)" class="ol"/><path d="M46 -80 Q70 -86 68 -112" class="ols"/>' +
+    '<path d="M-26 -56 Q-32 -24 -28 -2 L-4 -2 Q-4 -30 -8 -56Z" fill="url(#g-fur)" class="ol"/><path d="M26 -56 Q32 -24 28 -2 L4 -2 Q4 -30 8 -56Z" fill="url(#g-fur)" class="ol"/>' +
+    '<ellipse cx="-17" cy="-1" rx="15" ry="6" fill="#4A4D60" class="ol"/><ellipse cx="17" cy="-1" rx="15" ry="6" fill="#4A4D60" class="ol"/><path d="M-26 -3 V1 M-18 -4 V1 M18 -4 V1 M26 -3 V1" stroke="#F1F2F8" stroke-width="2.2" stroke-linecap="round"/>' +
+    '<path d="M-42 -50 Q-52 -112 -26 -136 Q0 -148 26 -136 Q52 -112 42 -50 Q0 -38 -42 -50Z" fill="url(#g-fur)" class="ol"/><ellipse cx="0" cy="-88" rx="19" ry="36" fill="url(#g-furL)"/>' +
+    '<path d="M-34 -118 Q-66 -92 -56 -56 L-42 -60 Q-50 -90 -28 -106Z" fill="url(#g-fur)" class="ol"/><path d="M34 -118 Q66 -92 56 -56 L42 -60 Q50 -90 28 -106Z" fill="url(#g-fur)" class="ol"/>' +
+    '<path d="M-60 -58 Q-58 -50 -50 -54 L-52 -46 L-60 -48Z M60 -58 Q58 -50 50 -54 L52 -46 L60 -48Z" fill="#F1F2F8" class="ol1"/>' +
+    '<path d="M-32 -138 L-40 -148 L-28 -150 L-30 -160 L-16 -154 L-12 -166 L0 -156 L12 -166 L16 -154 L30 -160 L28 -150 L40 -148 L32 -138 Q0 -126 -32 -138Z" fill="url(#g-furL)" class="ol"/>' +
+    '<use href="#wolf-head" transform="translate(0 -160)"/></g>';
+  const wolf = wolfHead + wolfBody;
+
+  /* ---- cenários ---- */
+  const sparkles = (pts, cls) => pts.map((p, i) => '<circle class="' + cls + '" style="animation-delay:' + (i * 0.7).toFixed(1) + 's" cx="' + p[0] + '" cy="' + p[1] + '" r="' + (p[2] || 3) + '" fill="#FFF3A8"/>').join('');
+  const flowers = (pts) => pts.map((p) => use('fl', 'translate(' + p[0] + ' ' + p[1] + ') scale(' + (p[3] || 1) + ')', 'color:' + p[2])).join('');
+  const tufts = (pts) => pts.map((p) => use('tuft', 'translate(' + p[0] + ' ' + p[1] + ') scale(' + (p[2] || 1) + ')')).join('');
+  const cottage = '<g>' +
+    '<rect x="424" y="344" width="192" height="26" rx="4" fill="#B9B2A4" class="ol"/><path d="M440 344 V370 M470 344 V370 M500 344 V370 M530 344 V370 M560 344 V370 M590 344 V370" class="ols"/>' +
+    '<rect x="432" y="250" width="176" height="96" rx="3" fill="url(#g-wall)" class="ol"/><path d="M432 298 H608 M520 250 V346 M468 250 V298 M572 250 V298" stroke="#8A5A3C" stroke-width="5"/>' +
+    '<path d="M408 260 L520 170 L632 260Z" fill="url(#g-roof)" class="ol"/><path d="M432 248 H608 M446 234 H594 M464 220 H576 M482 206 H558 M498 192 H542" stroke="#8F2119" stroke-width="2.4" opacity=".45"/><path d="M408 260 H632" stroke="#7A1912" stroke-width="5"/>' +
+    '<rect x="566" y="186" width="26" height="46" fill="#A2603F" class="ol"/><rect x="562" y="180" width="34" height="9" rx="2" fill="#7E4A30" class="ol"/><g class="smoke"><circle cx="580" cy="168" r="8" fill="#fff" opacity=".7"/><circle cx="588" cy="150" r="11" fill="#fff" opacity=".55"/><circle cx="600" cy="130" r="14" fill="#fff" opacity=".4"/></g>' +
+    '<rect x="452" y="272" width="36" height="38" rx="3" fill="#FFE8A8" class="ol"/><path d="M470 272 V310 M452 291 H488" class="win"/><path d="M452 272 Q458 292 454 308 L462 308 Q464 292 462 272Z" fill="#E8604F" opacity=".85"/><rect x="446" y="312" width="48" height="11" rx="2" fill="#8A5A3C" class="ol"/><circle cx="454" cy="310" r="5" fill="#E8604F"/><circle cx="466" cy="308" r="5" fill="#F29AC0"/><circle cx="478" cy="310" r="5" fill="#FFD84A"/><circle cx="488" cy="309" r="4" fill="#E8604F"/>' +
+    '<rect x="552" y="272" width="36" height="38" rx="3" fill="#FFE8A8" class="ol"/><path d="M570 272 V310 M552 291 H588" class="win"/><rect x="546" y="312" width="48" height="11" rx="2" fill="#8A5A3C" class="ol"/><circle cx="556" cy="310" r="5" fill="#F29AC0"/><circle cx="568" cy="308" r="5" fill="#FFD84A"/><circle cx="580" cy="310" r="5" fill="#E8604F"/>' +
+    '<path d="M497 346 V312 Q519 294 541 312 V346Z" fill="url(#g-wood)" class="ol"/><path d="M519 300 V346" class="ols"/><circle cx="532" cy="330" r="3" fill="#F2C14E" class="ol1"/>' +
+    '</g>';
+  const bgCasa = '<g id="bg-casa"><rect width="800" height="500" fill="url(#g-skyMorn)"/><circle cx="660" cy="92" r="160" fill="url(#g-sun)"/><circle cx="660" cy="92" r="40" fill="#FFE680"/>' +
+    use('cloud', 'translate(170 96)') + use('cloud', 'translate(470 66) scale(.8)') + use('cloud', 'translate(730 180) scale(.6)') +
+    '<path d="M0 292 Q170 216 340 282 T640 264 T800 286 L800 500 L0 500Z" fill="url(#g-hillFar)"/>' + use('tree-c', 'translate(70 306) scale(.8)') + use('tree-c', 'translate(736 302) scale(.9)') + use('tree-c', 'translate(300 296) scale(.55)') +
+    '<path d="M0 340 Q220 306 420 336 T800 322 L800 500 L0 500Z" fill="url(#g-hillMid)"/><rect x="0" y="330" width="800" height="26" fill="url(#g-mist)" opacity=".5"/>' +
+    '<path d="M0 378 Q220 346 420 372 T800 360 L800 500 L0 500Z" fill="url(#g-ground)"/>' +
+    '<path d="M506 372 Q470 424 320 500 L600 500 Q568 424 536 372Z" fill="url(#g-path)" class="ol1"/><ellipse cx="480" cy="440" rx="9" ry="4" fill="#C9A15F"/><ellipse cx="520" cy="470" rx="11" ry="4" fill="#C9A15F"/>' +
+    cottage +
+    '<path d="M150 400 H400 M150 424 H400" stroke="#C69A68" stroke-width="5" class="ol1"/><path d="M165 392 V440 M215 392 V440 M265 392 V440 M315 392 V440 M365 392 V440" stroke="#B4834F" stroke-width="7" stroke-linecap="round"/>' +
+    flowers([[420, 440, '#E8604F'], [640, 450, '#FFD84A', 1.2], [150, 460, '#fff'], [700, 430, '#F29AC0'], [590, 474, '#E8604F'], [250, 470, '#F29AC0']]) + tufts([[430, 456, 1], [610, 448, 1.2], [90, 470, 1.4], [760, 470, 1.3]]) +
+    use('tree-a', 'translate(66 398) scale(.95)') + use('tree-b', 'translate(756 406)') + use('an-dove', 'translate(550 186) scale(.6)') + use('an-butterfly', 'translate(240 330)') + '</g>';
+  const bgFloresta = '<g id="bg-floresta"><rect width="800" height="500" fill="url(#g-skyForest)"/><circle cx="640" cy="84" r="150" fill="url(#g-sun)"/>' +
+    '<path d="M540 0 L660 0 L500 380 L400 380Z" fill="url(#g-ray)" opacity=".55"/><path d="M420 0 L470 0 L360 380 L330 380Z" fill="url(#g-ray)" opacity=".35"/>' +
+    '<path d="M0 316 Q200 246 400 306 T800 286 L800 500 L0 500Z" fill="url(#g-hillFar)"/>' + use('tree-c', 'translate(60 330) scale(.7)') + use('tree-c', 'translate(190 318) scale(.6)') + use('tree-c', 'translate(330 326) scale(.7)') + use('tree-c', 'translate(520 322) scale(.65)') + use('tree-c', 'translate(660 326) scale(.7)') +
+    '<rect x="0" y="300" width="800" height="40" fill="url(#g-mist)" opacity=".6"/>' +
+    '<path d="M0 372 Q220 336 430 366 T800 352 L800 500 L0 500Z" fill="url(#g-ground)"/><path d="M360 500 Q390 440 430 400 Q460 372 500 352 L542 356 Q502 384 472 420 Q452 460 492 500Z" fill="url(#g-path)" class="ol1"/>' +
+    tufts([[40, 470, 1.4], [150, 480, 1.1], [330, 490, 1.2], [700, 480, 1.3], [610, 440, 1]]) + flowers([[120, 450, '#F29AC0'], [300, 470, '#FFD84A'], [690, 456, '#fff'], [760, 440, '#E8604F', 1.2]]) + use('shroom', 'translate(240 478)') + use('shroom', 'translate(258 484) scale(.7)') + use('rock', 'translate(640 484) scale(.8)') +
+    use('tree-b', 'translate(40 432) scale(1.1)') + use('tree-a', 'translate(772 442) scale(1.2)') +
+    '<path d="M60 250 Q110 238 160 252" stroke="#6B4425" stroke-width="7" fill="none" stroke-linecap="round"/>' + use('an-owl', 'translate(120 244) scale(.7)') + use('an-squirrel', 'translate(104 452) scale(.9)') + use('an-rabbit', 'translate(712 462) scale(.9)') + use('an-dove', 'translate(690 214) scale(.6)') + use('an-butterfly', 'translate(430 290) scale(.9)') +
+    sparkles([[300, 360], [380, 330], [560, 300], [640, 360], [150, 330], [470, 390]], 'tw') + '</g>';
+  const bgTrilha = '<g id="bg-trilha"><rect width="800" height="500" fill="url(#g-skyDay)"/><circle cx="130" cy="92" r="150" fill="url(#g-sun)"/><circle cx="130" cy="92" r="38" fill="#FFE680"/>' +
+    use('cloud', 'translate(420 80)') + use('cloud', 'translate(660 140) scale(.8)') + use('cloud', 'translate(250 150) scale(.6)') +
+    '<path d="M0 282 Q200 202 420 272 T800 252 L800 500 L0 500Z" fill="url(#g-hillFar)"/>' + use('tree-c', 'translate(600 292) scale(.8)') + use('tree-c', 'translate(120 296) scale(.7)') + '<rect x="0" y="286" width="800" height="30" fill="url(#g-mist)" opacity=".6"/>' +
+    '<path d="M0 352 Q260 302 520 346 T800 332 L800 500 L0 500Z" fill="url(#g-ground)"/><path d="M296 500 Q330 440 420 410 Q520 380 540 350 L584 352 Q562 392 472 428 Q412 452 424 500Z" fill="url(#g-path)" class="ol1"/>' +
+    flowers([[100, 440, '#E8604F'], [220, 472, '#FFD84A'], [640, 452, '#fff'], [740, 424, '#F29AC0'], [60, 480, '#fff', 1.2], [700, 480, '#E8604F', 1.2]]) + tufts([[160, 456, 1.3], [680, 446, 1.2], [20, 440, 1.2], [770, 470, 1.4]]) + use('an-rabbit', 'translate(712 470) scale(.9)') + use('an-butterfly', 'translate(560 300)') + use('an-butterfly', 'translate(180 380) scale(.8)') + '</g>';
+  const bgRio = '<g id="bg-rio"><rect width="800" height="500" fill="url(#g-skyDay)"/><circle cx="150" cy="88" r="40" fill="#FFE680"/>' + use('cloud', 'translate(500 80)') + use('cloud', 'translate(260 140) scale(.7)') +
+    '<path d="M0 290 Q200 230 420 280 T800 262 L800 500 L0 500Z" fill="url(#g-hillFar)"/><path d="M0 330 Q200 310 400 332 T800 322 L800 398 Q600 418 400 396 T0 404Z" fill="url(#g-river)"/>' +
+    '<path d="M80 366 Q130 356 180 366 M520 352 Q580 342 640 352 M260 384 Q320 376 380 384" class="streak"/>' +
+    '<path d="M0 396 Q200 410 400 394 T800 398 L800 500 L0 500Z" fill="url(#g-ground)"/><rect x="360" y="318" width="96" height="98" rx="8" fill="url(#g-woodV)" class="ol"/><path d="M366 334 H450 M366 352 H450 M366 370 H450 M366 388 H450" class="ols"/><rect x="354" y="312" width="10" height="106" rx="3" fill="#6B3F2A" class="ol1"/><rect x="452" y="312" width="10" height="106" rx="3" fill="#6B3F2A" class="ol1"/>' +
+    tufts([[120, 424, 1.2], [680, 430, 1.3], [300, 440, 1], [560, 446, 1.1]]) + flowers([[200, 440, '#F29AC0'], [620, 470, '#FFD84A'], [740, 450, '#fff']]) + use('rock', 'translate(280 404) scale(.8)') + use('tree-b', 'translate(60 424) scale(.9)') + use('tree-a', 'translate(750 434)') + use('an-frog', 'translate(210 402)') + use('an-dove', 'translate(300 200) scale(.6)') + '</g>';
+  const bgFlores = '<g id="bg-flores"><rect width="800" height="500" fill="url(#g-skyDay)"/><circle cx="640" cy="90" r="150" fill="url(#g-sun)"/><circle cx="640" cy="90" r="38" fill="#FFE680"/>' + use('cloud', 'translate(240 90)') + use('cloud', 'translate(520 150) scale(.7)') +
+    '<path d="M0 296 Q220 226 450 286 T800 266 L800 500 L0 500Z" fill="url(#g-hillFar)"/><path d="M0 360 Q260 320 520 355 T800 340 L800 500 L0 500Z" fill="url(#g-ground)"/><rect x="0" y="332" width="800" height="26" fill="url(#g-mist)" opacity=".5"/>' +
+    flowers([[40, 420, '#E8604F', 1.3], [110, 446, '#FFD84A', 1.3], [180, 410, '#fff', 1.2], [260, 456, '#F29AC0', 1.3], [340, 420, '#E8604F', 1.3], [430, 470, '#FFD84A', 1.3], [510, 414, '#F29AC0', 1.2], [590, 452, '#fff', 1.3], [670, 418, '#E8604F', 1.3], [750, 454, '#FFD84A', 1.3], [60, 480, '#fff', 1.1], [220, 490, '#E8604F', 1.2], [380, 492, '#F29AC0', 1.1], [560, 488, '#FFD84A', 1.2], [700, 490, '#fff', 1.1]]) +
+    tufts([[90, 470, 1.2], [300, 474, 1.1], [480, 482, 1.3], [640, 476, 1.1]]) + use('an-butterfly', 'translate(520 200) scale(1.2)') + use('an-butterfly', 'translate(160 270)') + use('an-butterfly', 'translate(650 330) scale(.9)') + use('tree-c', 'translate(730 330) scale(.9)') + '</g>';
+  const bgNoite = '<g id="bg-noite"><rect width="800" height="500" fill="url(#g-skyNight)"/><circle cx="620" cy="92" r="130" fill="url(#g-moon)"/><circle cx="620" cy="92" r="44" fill="#FFF7D0"/><circle cx="604" cy="82" r="8" fill="#F2E4A8" opacity=".6"/><circle cx="634" cy="106" r="6" fill="#F2E4A8" opacity=".6"/>' +
+    sparkles([[90, 60, 2.4], [200, 120, 2], [320, 50, 2.4], [430, 130, 2], [520, 60, 2.4], [740, 150, 2.2], [150, 200, 2], [680, 40, 2]], 'tw') +
+    '<path d="M0 300 Q220 240 440 296 T800 276 L800 500 L0 500Z" fill="#1E3260"/>' + use('tree-n', 'translate(120 330) scale(.8)') + use('tree-n', 'translate(300 322) scale(.7)') + use('tree-n', 'translate(560 326) scale(.75)') +
+    '<rect x="0" y="312" width="800" height="40" fill="url(#g-mist)" opacity=".25"/><path d="M0 370 Q240 336 440 364 T800 352 L800 500 L0 500Z" fill="url(#g-groundN)"/>' + use('tree-n', 'translate(50 430)') + use('tree-n', 'translate(760 440) scale(1.1)') +
+    sparkles([[260, 410, 4], [520, 440, 4], [660, 400, 4], [380, 460, 3.4], [120, 450, 3.6]], 'tw') + use('an-owl', 'translate(660 332) scale(.6)') + '</g>';
+  const bgQuarto = '<g id="bg-quarto"><rect width="800" height="500" fill="url(#g-wallR)"/>' +
+    [40, 120, 200, 280, 360, 440, 520, 600, 680, 760].map((x) => '<rect x="' + x + '" y="0" width="40" height="380" fill="#F0C984" opacity=".35"/>').join('') +
+    [60, 140, 220, 300, 380, 460, 540, 620, 700].map((x) => '<circle cx="' + x + '" cy="120" r="5" fill="#E8604F" opacity=".4"/><circle cx="' + (x + 40) + '" cy="210" r="5" fill="#E8604F" opacity=".4"/><circle cx="' + x + '" cy="300" r="5" fill="#E8604F" opacity=".4"/>').join('') +
+    '<rect y="330" width="800" height="50" fill="#B27A48"/><path d="M0 330 H800" stroke="#7A4C2B" stroke-width="5"/><rect y="380" width="800" height="120" fill="url(#g-floor)"/><path d="M0 420 H800 M0 460 H800 M150 380 V420 M420 380 V420 M640 380 V420 M60 420 V460 M300 420 V460 M540 420 V460 M740 420 V460" stroke="#6F4426" stroke-width="2.5" opacity=".5"/>' +
+    '<rect x="150" y="84" width="150" height="164" rx="10" fill="#A7DDF0" class="ol"/><path d="M150 166 H300 M225 84 V248" stroke="#8A5A3C" stroke-width="8"/><rect x="150" y="84" width="150" height="164" rx="10" fill="none" stroke="#8A5A3C" stroke-width="10"/>' +
+    '<circle cx="190" cy="130" r="26" fill="#fff" opacity=".7"/><path d="M130 76 Q142 170 130 262 L164 262 Q154 170 164 76Z" fill="#E8604F" class="ol1"/><path d="M320 76 Q308 170 320 262 L286 262 Q296 170 286 76Z" fill="#E8604F" class="ol1"/><rect x="110" y="68" width="230" height="10" rx="5" fill="#6B3F2A" class="ol1"/>' +
+    '<ellipse cx="300" cy="462" rx="196" ry="28" fill="#D9503F" class="ol1"/><ellipse cx="300" cy="462" rx="150" ry="20" fill="none" stroke="#FFE2B0" stroke-width="3" stroke-dasharray="8 6"/>' +
+    '<rect x="380" y="100" width="64" height="80" rx="4" fill="#fff" class="ol"/><rect x="388" y="108" width="48" height="64" fill="#A9D8A0"/><circle cx="412" cy="140" r="14" fill="#E8604F"/><rect x="722" y="110" width="52" height="40" rx="3" fill="#fff" class="ol"/><rect x="728" y="116" width="40" height="28" fill="#F5D88A"/>' +
+    '<circle cx="730" cy="250" r="90" fill="url(#g-lamp)"/><rect x="722" y="260" width="16" height="70" fill="#8A5A3C" class="ol1"/><path d="M706 262 L754 262 L744 226 L716 226Z" fill="#FFE9A0" class="ol"/></g>';
+
+  const defsHTML = grads + nat + trees + animals + people + wolf + bgCasa + bgFloresta + bgTrilha + bgRio + bgFlores + bgNoite + bgQuarto;
+  return { defsHTML: defsHTML, humanoid: humanoid, headMarkup: headMarkup, CFG: CFG, rigT: rigT, IDLE: IDLE };
+})();
+
+$('#defs').innerHTML = ART.defsHTML;
+
+const P = {
+  r: '<path d="M9 5l7 7-7 7"/>', check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16.5v.01"/>',
+  vol: '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/>',
+  cap: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/>',
+  play: '<path d="M7 4l13 8-13 8z"/>', pause: '<path d="M8 5v14"/><path d="M16 5v14"/>',
+  wind: '<path d="M3 8h10a3 3 0 1 0-3-3"/><path d="M3 12h15a3 3 0 1 1-3 3"/><path d="M3 16h6"/>',
+  heart: '<path d="M12 21s-7-4.6-9.2-9A5.2 5.2 0 0 1 12 6.5 5.2 5.2 0 0 1 21.2 12C19 16.4 12 21 12 21z"/>',
+  chat: '<path d="M4 5h16v11H9l-5 4z"/>', pulse: '<path d="M3 12h4l2-6 4 12 2-6h6"/>',
+  mega: '<path d="M3 11v2a1 1 0 0 0 1 1h3l8 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M18 9a4 4 0 0 1 0 6"/>',
+  move: '<circle cx="12" cy="5" r="2"/><path d="M12 7v7"/><path d="M5 9l7 2 7-2"/><path d="M9 21l3-7 3 7"/>',
+  star: '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>'
+};
+const ic = (k, extra) => '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"' + (extra ? ' ' + extra : '') + '>' + P[k] + '</svg>';
+
+/* ---------- dados ---------- */
+const STEPS = ['cover', 's1', 's2', 's3', 's4', 's5', 's6', 'values', 'quiz', 'body', 'fear', 'helps', 'breath', 'stretch', 'create', 'portfolio'];
+const STORY_IDS = ['s1', 's2', 's3', 's4', 's5', 's6'];
+const SECTIONS = [
+  { id: 'historia', name: 'História', first: 1, last: 6 },
+  { id: 'valores', name: 'Valores', first: 7, last: 8 },
+  { id: 'emocao', name: 'Emoção', first: 9, last: 11 },
+  { id: 'corpo', name: 'Corpo', first: 12, last: 13 },
+  { id: 'criar', name: 'Criar', first: 14, last: 14 },
+  { id: 'portfolio', name: 'Portfólio', first: 15, last: 15 }
+];
+const STORY = {
+  s1: { chap: 'Capítulo 1 · A casinha na beira da floresta', map: 0, page: 1, sky: '#BDE8F5', alt: 'A casinha na beira da floresta, com uma mesa de doces e Chapeuzinho segurando a cesta',
+    text: 'Era uma vez uma menina querida por todos. Ela usava sempre um capuz vermelho, e por isso era chamada de Chapeuzinho Vermelho. Naquela manhã, a mamãe pediu ajuda para arrumar a cesta de doces da vovó, que estava doente.',
+    prompt: 'Oi! Eu sou a Pipoca. Ajude a Chapeuzinho: toque nos 3 docinhos para colocar na cesta!', ok: 'Muito bem! A cesta está prontinha para a vovó!' },
+  s2: { chap: 'Capítulo 1 · A casinha na beira da floresta', map: 1, page: 2, sky: '#BDE8F5', alt: 'Uma placa com dois caminhos: o atalho escuro e a trilha da vovó',
+    text: 'Com a cesta pronta, a mamãe pediu: “Vá direto pela trilha e não converse com estranhos.” Chapeuzinho saiu cantarolando, até que a trilha se dividiu em dois caminhos.',
+    prompt: 'Qual caminho a Chapeuzinho deve seguir? Lembre o que a mamãe disse: direto pela trilha!', ok: 'Isso! Direto pela trilha da vovó. Vamos lá!' },
+  s3: { chap: 'Capítulo 2 · A trilha da floresta', map: 2, page: 1, sky: '#CFE9C9', alt: 'Na floresta, três arbustos e um deles esconde o Lobo',
+    text: 'No meio da trilha, Chapeuzinho sentiu que alguém a espiava. Era o Lobo! Ele saiu de trás do arbusto, sorriu e perguntou: “Aonde você vai, menina?”',
+    prompt: 'Tem alguém escondido! Procure dois olhinhos amarelos e toque no arbusto certo.', ok: 'Achou! Era o Lobo espiando atrás do arbusto!' },
+  s4: { chap: 'Capítulo 2 · A trilha da floresta', map: 2, page: 2, sky: '#CFE9C9', alt: 'Chapeuzinho no centro da trilha, sentindo algo na barriga',
+    text: 'Chapeuzinho sentiu um friozinho na barriga, mas respondeu: “Vou à casa da vovó, do outro lado da floresta.” O Lobo agradeceu e saiu correndo por um atalho.',
+    prompt: 'O que será que a Chapeuzinho está sentindo? Toque na barriguinha dela para descobrir.', ok: 'Brrr! É o friozinho do medo. O nosso corpo avisa quando algo não está bem.' },
+  s5: { chap: 'Capítulo 3 · A casa da vovó', map: 3, page: 1, sky: '#FBE3B5', vb: '260 130 480 340', coach: 'bottom', alt: 'No quarto da vovó, o Lobo está na cama usando uma touca',
+    text: 'Toc, toc, toc! Chapeuzinho entrou na casa da vovó e estranhou: “Vovó, que olhos grandes você tem!” — “É para te ver melhor!” — “E que boca grande!” — “É para te comer!”',
+    prompt: 'Essa vovó está esquisita! Vamos descobrir quem é, parte por parte.', ok: 'Essa não é a vovó! É o Lobo disfarçado!' },
+  s6: { chap: 'Capítulo 3 · A casa da vovó', map: 3, page: 2, sky: '#BDE8F5', alt: 'Chapeuzinho grita por ajuda e o caçador chega para salvar a todos',
+    text: 'Chapeuzinho gritou tão alto que o caçador, que passava por perto, correu e salvou todo mundo. Desse dia em diante, Chapeuzinho aprendeu a escutar o que o corpo dela dizia.',
+    prompt: 'Chame ajuda com voz forte! Toque no botão SOCORRO 3 vezes, bem alto!', ok: 'O caçador chegou! Pedir ajuda é um ato de coragem.' }
+};
+const FEATS = [
+  { id: 'olhos', q: '“Vovó, que olhos grandes você tem!” Toque nos olhos dela.', a: '“É para te ver melhor!”', hint: 'os olhos grandes da carinha' },
+  { id: 'orelhas', q: '“Vovó, que orelhas grandes!” Toque nas orelhas.', a: '“É para te ouvir melhor!”', hint: 'as orelhas peludas, lá em cima' },
+  { id: 'boca', q: '“E que boca grande!” Toque na boca.', a: '“É para te comer!”', hint: 'a boca cheia de dentes' }
+];
+const SPEECH = {
+  cover: 'Chapeuzinho Vermelho. Uma história para ler, sentir e mexer o corpo.',
+  values: 'Contos são passaportes para o saber. Toda história é um passaporte: ela nos leva a lugares novos e nos ajuda a entender o que sentimos. Na história de hoje, a Chapeuzinho sentiu um friozinho na barriga.',
+  quiz: 'Quando o Lobo perguntou aonde ela ia, o que Chapeuzinho poderia ter feito?',
+  body: 'Onde o medo mora no seu corpo? Toque nas partes do corpo onde você sente o seu medo. Não existe lugar certo ou errado.',
+  fear: 'Qual é o tamanho desse medo? Mexa o controle até encontrar o tamanho do medo da Chapeuzinho, ou do seu medo.',
+  helps: 'O que ajuda o medo a ficar menor? Escolha as ferramentas que você gostaria de usar.',
+  breath: 'Respire como na cesta da vovó. Inspire pelo nariz, cheirando os doces. Segure um pouquinho. Depois solte devagar, soprando a sopa quente.',
+  stretch: 'Alongamento da trilha. Siga cada postura com calma, respirando devagar.',
+  create: 'Agora a história é sua! Escolha o cenário, quem entra na história e escreva o que aconteceu depois.',
+  portfolio: 'Este é o portfólio da criança. Tudo o que ela fez fica registrado para a família e para a escola.'
+};
+const GUIDE = {
+  cover: ['Apresentação do conto', 'Espaço para a especialista apresentar o conto, a faixa etária indicada e o tema central. Neste protótipo, o tema usado como exemplo é medo e confiança no próprio corpo.'],
+  story: ['Leitura com desafios', 'Cada página traz um desafio em que a criança ajuda a Chapeuzinho. Observe se ela espera, tenta de novo e pede ajuda. As tentativas ficam registradas no portfólio, e a criança pode pular um desafio quando quiser.'],
+  values: ['Conversa sobre valores', 'Use o passaporte do saber como abertura: peça que a criança conte, com as próprias palavras, uma situação em que precisou escutar um aviso do próprio corpo.'],
+  quiz: ['Como conduzir', 'Nenhuma alternativa “reprova”: cada uma devolve um retorno acolhedor. Observe qual alternativa a criança escolhe primeiro e pergunte por quê.'],
+  body: ['Percepção corporal', 'Convide a criança a colocar a mão na parte do corpo que marcou. O objetivo é nomear a sensação, sem julgamento. Não existe lugar certo ou errado.'],
+  fear: ['Dar nome ao tamanho', 'Medir o sentimento ajuda a criança a conversar sobre ele. Compare com a medição depois da respiração e registre a diferença.'],
+  helps: ['Ferramentas de cuidado', 'A criança escolhe o que mais combina com ela. As escolhas ficam registradas no portfólio e podem ser retomadas em outras histórias.'],
+  breath: ['Respiração guiada', 'Convide a criança a observar a barriga subir e descer. Ela pode parar a qualquer momento. Atividade educativa; não substitui acompanhamento profissional.'],
+  stretch: ['Alongamento guiado', 'Cada postura dura cerca de 10 segundos e pode ser pulada. Combine com a criança um sinal para parar se algo incomodar.'],
+  create: ['Produção da criança', 'O texto é livre e fica salvo no portfólio. Valorize o processo de escrita, não a correção ortográfica.'],
+  portfolio: ['Leitura do portfólio', 'Resumo das ações da criança: o que fez, o que respondeu e como evoluiu. Em produção, os registros ficam no banco de dados com acesso restrito à família e à escola.']
+};
+const QUIZ = [
+  { t: 'Contar tudo, porque o Lobo parecia simpático.', good: false, fb: 'Ser simpático não é o mesmo que ser de confiança. Vamos pensar mais um pouquinho?' },
+  { t: 'Parar, respirar e perceber o que o corpo estava dizendo.', good: true, fb: 'Isso mesmo! O corpo costuma avisar quando algo não está bem. Escutar esse aviso é uma superpotência.' },
+  { t: 'Sair correndo sem avisar ninguém.', good: false, fb: 'Se afastar pode ajudar, mas contar para um adulto de confiança ajuda ainda mais.' },
+  { t: 'Pedir ajuda a um adulto de confiança.', good: true, fb: 'Também é uma ótima ideia! Pedir ajuda é um ato de coragem.' }
+];
+const BODY_LIST = [{ id: 'cabeca', name: 'Cabeça' }, { id: 'peito', name: 'Peito' }, { id: 'barriga', name: 'Barriga' }, { id: 'maos', name: 'Mãos' }, { id: 'pernas', name: 'Pernas' }];
+const BODY_ZONES = [
+  { id: 'cabeca', name: 'Cabeça', label: 'Cabeça', pos: 'left:50%;top:15.5%' },
+  { id: 'peito', name: 'Peito', label: 'Peito', pos: 'left:50%;top:37%' },
+  { id: 'barriga', name: 'Barriga', label: 'Barriga', pos: 'left:50%;top:52%' },
+  { id: 'maos', name: 'Mão', label: 'Mão esquerda', pos: 'left:13%;top:60%' },
+  { id: 'maos', name: 'Mão', label: 'Mão direita', pos: 'left:87%;top:60%' },
+  { id: 'pernas', name: 'Pernas', label: 'Pernas', pos: 'left:50%;top:80%' }
+];
+const HELPS = [
+  { id: 'respirar', name: 'Respirar fundo', icon: 'wind' }, { id: 'abraco', name: 'Pedir um abraço', icon: 'heart' },
+  { id: 'adulto', name: 'Contar para um adulto', icon: 'chat' }, { id: 'peito', name: 'Mão no peito, escutar o coração', icon: 'pulse' },
+  { id: 'voz', name: 'Dizer “não” com voz forte', icon: 'mega' }, { id: 'mexer', name: 'Mexer o corpo', icon: 'move' }
+];
+const POSES = [
+  { n: 'Alcançar as maçãs', d: 'Erga os braços e estique o corpo todo, como se quisesse alcançar a maçã mais alta. Respire devagar.' },
+  { n: 'Balançar como a árvore', d: 'Com os pés firmes no chão, incline o corpo para um lado e depois para o outro, como uma árvore balançando com o vento.' },
+  { n: 'Abrir os braços como o vento', d: 'Abra bem os braços, como asas, e deixe o vento passar. Respire fundo e sinta o peito abrir.' },
+  { n: 'Abraço de urso', d: 'Cruze os braços e dê um abraço em você mesmo(a). Feche os olhos e respire fundo três vezes.' }
+];
+const SCENERIES = [{ id: 'floresta', name: 'Floresta' }, { id: 'trilha', name: 'Trilha' }, { id: 'casa', name: 'Casa da vovó' }, { id: 'rio', name: 'Rio' }, { id: 'flores', name: 'Campo de flores' }, { id: 'noite', name: 'Noite' }];
+const CHARS = [{ id: 'chapeu', name: 'Chapeuzinho' }, { id: 'mama', name: 'Mamãe' }, { id: 'vovo', name: 'Vovó' }, { id: 'lobo', name: 'Lobo' }, { id: 'cacador', name: 'Caçador' }];
+const BREATH_TICKS = 240, STRETCH_TICKS = 200;
+
+/* ---------- estado ---------- */
+const fresh = () => ({
+  step: 0, max: 0, stars: 0, guide: false, speaking: false,
+  done: {}, skipped: {}, tries: { s2: 0, s3: 0, s5: 0 },
+  treats: [false, false, false], s5: 0, shouts: 0,
+  quiz: null, body: [], fear: 5, fearTouched: false, helps: [],
+  breathRun: false, breathTk: 0, after: null, breathStar: false,
+  stretchRun: false, stretchTk: 0, stretchStar: false,
+  scenery: 'floresta', chars: { chapeu: true, mama: false, vovo: false, lobo: true, cacador: false }, ending: ''
+});
+let state = fresh();
+let coachText = '';
+const stage = $('#stage');
+
+/* ---------- utilitários ---------- */
+function stopSpeech() { try { if (window.speechSynthesis) { window.speechSynthesis.cancel(); } } catch (e) { /* sem narração */ } state.speaking = false; updateSpeak(); }
+function speakText(t) {
+  try {
+    const ss = window.speechSynthesis;
+    if (!ss || !t) { return; }
+    if (state.speaking) { stopSpeech(); return; }
+    ss.cancel();
+    const u = new SpeechSynthesisUtterance(t);
+    u.lang = 'pt-BR'; u.rate = 0.92;
+    const v = (ss.getVoices ? ss.getVoices() : []).find((x) => /pt[-_]BR/i.test(x.lang));
+    if (v) { u.voice = v; }
+    u.onend = () => { state.speaking = false; updateSpeak(); };
+    u.onerror = () => { state.speaking = false; updateSpeak(); };
+    state.speaking = true; updateSpeak(); ss.speak(u);
+  } catch (e) { state.speaking = false; updateSpeak(); }
+}
+function updateSpeak() { const b = $('#bSpeak'); if (!b) { return; } b.classList.toggle('on', state.speaking); $('#speakLbl').textContent = state.speaking ? 'Parar' : 'Ouvir'; b.setAttribute('aria-label', state.speaking ? 'Parar a narração' : 'Ouvir a narração'); }
+function currentText() { const id = STEPS[state.step]; if (STORY[id]) { return coachText + ' ' + STORY[id].text; } return SPEECH[id] || ''; }
+
+function celebrate(msg) {
+  const fx = $('#fx');
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + P.star + '</svg><span>' + (msg || 'Muito bem!') + '</span>';
+  fx.appendChild(t);
+  setTimeout(() => t.remove(), 1950);
+  if (REDUCED) { return; }
+  const cols = ['#C9362B', '#FFC857', '#2F7A48', '#6EC3E6', '#F29AC0', '#8E6BB8'];
+  for (let i = 0; i < 30; i++) {
+    const c = document.createElement('i');
+    c.className = 'conf';
+    c.style.left = (Math.random() * 100) + '%';
+    c.style.background = cols[i % cols.length];
+    c.style.setProperty('--dx', (Math.random() * 160 - 80) + 'px');
+    c.style.animationDelay = (Math.random() * 0.4) + 's';
+    fx.appendChild(c);
+    setTimeout(() => c.remove(), 2500);
+  }
+}
+function addStars(n) { state.stars += n; $('#starN').textContent = state.stars; $('#starChip').setAttribute('aria-label', state.stars + ' estrelinhas'); }
+function say(msg) { $('#srStatus').textContent = msg; }
+
+function setCoach(msg, kind) {
+  coachText = msg;
+  const m = $('#cmsg'); if (!m) { return; }
+  m.textContent = msg;
+  const b = $('#cbub'); b.className = 'cbub' + (kind ? ' ' + kind : '');
+  say(msg);
+}
+function setCount(t) { const c = $('#ccount'); if (c) { c.textContent = t; } }
+function complete(id, msg, skipped) {
+  if (state.done[id]) { return; }
+  state.done[id] = true;
+  if (skipped) { state.skipped[id] = true; } else { addStars(1); celebrate('Muito bem!'); }
+  setCoach(msg || STORY[id].ok, 'ok');
+  const sk = $('[data-act="skip"]'); if (sk) { sk.hidden = true; }
+  setCount('Completo');
+  updateChrome();
+}
+const anim = (el, frames, opts) => (el && el.animate ? el.animate(frames, Object.assign({ fill: 'forwards' }, opts)) : null);
+
+/* ---------- cenas ---------- */
+const hot = (act, v, label, shape, extra) => '<g class="hot" data-act="' + act + '" data-v="' + v + '" tabindex="0" role="button" aria-label="' + label + '"' + (extra || '') + '>' + shape + '</g>';
+const treatArt = [
+  '<path d="M-15 4 L15 4 L11 26 Q0 30 -11 26Z" fill="#E8604F" class="ol1"/><path d="M-9 8 V24 M0 8 V26 M9 8 V24" class="ols"/><ellipse cx="0" cy="2" rx="17" ry="9" fill="#FFD1E3" class="ol1"/><circle cx="0" cy="-8" r="9" fill="#fff" class="ol1"/><circle cx="0" cy="-17" r="4.5" fill="#C9362B" class="ol1"/><circle cx="-6" cy="3" r="1.6" fill="#F29AC0"/><circle cx="6" cy="1" r="1.6" fill="#FFD84A"/>',
+  '<ellipse cx="0" cy="6" rx="22" ry="14" fill="#DDA55F" class="ol1"/><ellipse cx="-4" cy="1" rx="12" ry="6" fill="#F0C688" opacity=".8"/><path d="M-11 0 L-5 13 M0 -3 L6 13 M11 0 L17 11" stroke="#A8692F" stroke-width="3" stroke-linecap="round" fill="none"/>',
+  '<rect x="-13" y="-6" width="26" height="32" rx="6" fill="#C9362B" class="ol1"/><rect x="-15" y="-13" width="30" height="10" rx="3" fill="#F3E3B0" class="ol1"/><rect x="-8" y="4" width="16" height="12" rx="3" fill="#FFF6DE" class="ol1"/><path d="M-5 9 H5 M-5 12 H3" stroke="#C9362B" stroke-width="1.6"/><circle cx="-4" cy="-16" r="3" fill="#E8604F"/>'
+];
+const treatNames = ['o cupcake', 'o pãozinho', 'a geleia'];
+function sceneS1() {
+  const xs = [240, 352, 464];
+  const items = xs.map((x, i) => '<g transform="translate(' + x + ' 378)">' + hot('treat', i, 'Colocar ' + treatNames[i] + ' na cesta',
+    '<circle class="halo" r="38"/>' + treatArt[i] + '<circle r="42" fill="rgba(255,255,255,0.01)"/>', ' data-x="' + x + '"') + '</g>').join('');
+  return '<use href="#bg-casa"/>' +
+    '<g transform="translate(184 398)"><rect x="-6" y="-2" width="334" height="8" rx="3" fill="#FFF3EE" class="ol1"/><path d="M6 2 H316" stroke="#D93A30" stroke-width="3" stroke-dasharray="10 10" opacity=".7"/><rect width="322" height="18" rx="6" fill="url(#g-woodV)" class="ol1"/><rect x="14" y="18" width="12" height="54" fill="url(#g-woodV)" class="ol1"/><rect x="296" y="18" width="12" height="54" fill="url(#g-woodV)" class="ol1"/></g>' +
+    '<use href="#char-chapeu" transform="translate(540 462) scale(1.3)"/>' + items;
+}
+function sceneS2() {
+  return '<use href="#bg-trilha"/>' +
+    '<ellipse cx="130" cy="436" rx="82" ry="48" fill="url(#g-leafN)"/><ellipse cx="86" cy="446" rx="52" ry="34" fill="url(#g-leafD)"/><ellipse cx="180" cy="452" rx="48" ry="30" fill="url(#g-leafD)"/>' +
+    '<path d="M70 410 L82 392 L92 410 M150 408 L162 388 L172 408" stroke="#10353A" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="116" cy="430" rx="5" ry="3.4" fill="#FFE08A"/><ellipse cx="140" cy="430" rx="5" ry="3.4" fill="#FFE08A"/>' +
+    '<rect x="390" y="288" width="20" height="176" rx="6" fill="url(#g-wood)" class="ol"/><path d="M398 300 V450 M404 310 V440" class="ols"/><circle cx="400" cy="288" r="9" fill="url(#g-wood)" class="ol"/>' +
+    '<g id="chapMove"><use href="#char-chapeu" transform="translate(205 484) scale(1.2)"/></g>' +
+    '<g transform="translate(340 322)">' + hot('sign', 'a', 'Atalho escuro', '<rect class="halo" x="-92" y="-38" width="184" height="76" rx="14"/><path d="M62 -26 L-70 -26 L-94 0 L-70 26 L62 26Z" fill="#5A3F33" class="ol"/><path d="M-60 -16 H52 M-60 16 H52" class="ols" style="stroke:#1D1018"/><circle cx="52" cy="0" r="3" fill="#B8B2A5"/><text class="sgn" x="-4" y="9">Atalho</text><rect x="-84" y="-42" width="172" height="84" fill="rgba(255,255,255,0.01)"/>') + '</g>' +
+    '<g transform="translate(497 372)">' + hot('sign', 'b', 'Trilha da vovó', '<rect class="halo" x="-92" y="-38" width="184" height="76" rx="14"/><path d="M-62 -26 L70 -26 L94 0 L70 26 L-62 26Z" fill="#F4C76B" class="ol"/><path d="M-52 -16 H60 M-52 16 H60" class="ols"/><circle cx="-52" cy="0" r="3" fill="#B9793F"/><text class="sgn dk" x="4" y="9">Trilha</text><rect x="-84" y="-42" width="172" height="84" fill="rgba(255,255,255,0.01)"/>') + '</g>';
+}
+function bush(x, i, eyes) {
+  return '<g transform="translate(' + x + ' 440) scale(0.85)"><g id="bush' + i + '">' + hot('bush', i, 'Arbusto ' + (i + 1),
+    '<ellipse class="halo" rx="66" ry="46" cy="-4"/><ellipse cy="14" rx="64" ry="14" fill="#2B2540" opacity=".14"/><ellipse rx="60" ry="38" fill="url(#g-leafD)"/><ellipse cx="-34" cy="10" rx="36" ry="28" fill="url(#g-leafM)"/><ellipse cx="34" cy="10" rx="36" ry="28" fill="url(#g-leafM)"/><ellipse cx="0" cy="-12" rx="38" ry="26" fill="url(#g-leafM)"/><ellipse cx="-12" cy="-22" rx="22" ry="14" fill="url(#g-leafL)" opacity=".85"/><circle cx="30" cy="-10" r="4" fill="#E8604F"/><circle cx="-34" cy="2" r="4" fill="#E8604F"/><circle cx="14" cy="14" r="4" fill="#E8604F"/>' +
+    (eyes ? '<g class="blink"><ellipse cx="-13" cy="-2" rx="6.4" ry="8.4" fill="#FFE08A"/><ellipse cx="13" cy="-2" rx="6.4" ry="8.4" fill="#FFE08A"/><ellipse cx="-12" cy="-2" rx="1.8" ry="5.4" fill="#1B1830"/><ellipse cx="14" cy="-2" rx="1.8" ry="5.4" fill="#1B1830"/></g>' : '') +
+    '<ellipse rx="70" ry="62" cy="-10" fill="rgba(255,255,255,0.01)"/>') + '</g></g>';
+}
+function sceneS3() {
+  return '<use href="#bg-floresta"/><use href="#char-chapeu-w" transform="translate(215 470) scale(1.3)"/>' +
+    '<g id="wolfPop" style="opacity:0"><use href="#char-lobo" transform="translate(565 476) scale(1.05)"/></g>' +
+    bush(350, 0, false) + bush(455, 1, false) + '<g id="wolfBushW">' + bush(560, 2, true) + '</g>';
+}
+function sceneS4() {
+  return '<use href="#bg-floresta"/><use href="#char-lobo" transform="translate(620 360) scale(-0.4 0.4)"/>' +
+    '<use href="#char-chapeu-w" transform="translate(400 486) scale(1.7)"/>' +
+    '<g id="fx4"></g>' +
+    '<g transform="translate(400 322)">' + hot('belly', 'b', 'Tocar a barriga da Chapeuzinho', '<circle class="halo" r="48"/><circle r="52" fill="rgba(255,255,255,0.01)"/>') + '</g>';
+}
+function sceneS5() {
+  const hs = [
+    ['olhos', 'Olhos da vovó', '<ellipse class="halo" cx="560" cy="278" rx="54" ry="22"/><ellipse cx="560" cy="278" rx="58" ry="25" fill="rgba(255,255,255,0.01)"/>'],
+    ['orelhas', 'Orelhas da vovó', '<circle class="halo" cx="492" cy="221" r="30"/><circle class="halo" cx="628" cy="221" r="30"/><circle cx="492" cy="221" r="34" fill="rgba(255,255,255,0.01)"/><circle cx="628" cy="221" r="34" fill="rgba(255,255,255,0.01)"/>'],
+    ['boca', 'Boca da vovó', '<circle class="halo" cx="560" cy="328" r="26"/><circle cx="560" cy="328" r="30" fill="rgba(255,255,255,0.01)"/>']
+  ].map((h) => hot('feat', h[0], h[1], h[2], h[0] === 'olhos' ? ' data-grow="up"' : h[0] === 'boca' ? ' data-grow="down"' : '')).join('');
+  return '<use href="#bg-quarto"/><use href="#char-chapeu-w" transform="translate(350 470) scale(1.3)"/>' +
+    '<rect x="410" y="176" width="320" height="270" rx="18" fill="url(#g-wood)" class="ol"/><path d="M430 200 H710 M430 222 H710" class="ols"/><rect x="396" y="326" width="350" height="116" rx="20" fill="#fff" class="ol"/>' +
+    '<ellipse cx="560" cy="318" rx="112" ry="42" fill="#F4F0FF" class="ol1"/>' +
+    '<g transform="translate(560 296) scale(2.2)"><use href="#wolf-head"/><path d="M-24 -20 Q-22 -50 0 -52 Q22 -50 24 -20 Q12 -32 0 -32 Q-12 -32 -24 -20Z" fill="#fff" class="ol1"/><path d="M-20 -26 Q0 -40 20 -26" class="ols"/><circle cx="0" cy="-50" r="6" fill="#E8604F" class="ol1"/></g>' +
+    '<rect x="396" y="356" width="350" height="88" rx="18" fill="#7FB3E0" class="ol"/><path d="M456 356 V444 M526 356 V444 M596 356 V444 M666 356 V444" class="ols"/><path d="M396 374 Q570 394 746 374" stroke="#fff" stroke-width="5" fill="none" opacity=".6"/>' + hs;
+}
+function sceneS6() {
+  return '<use href="#bg-casa"/>' +
+    '<g id="vovoW" style="opacity:0"><use href="#char-vovo" transform="translate(450 472) scale(1.25)"/></g>' +
+    '<g id="wolfW"><use href="#char-lobo" transform="translate(190 472) scale(1.05)"/></g>' +
+    '<use href="#char-chapeu-s" transform="translate(330 482) scale(1.5)"/>' +
+    '<g id="hunterW" style="opacity:0"><use href="#char-cacador" transform="translate(570 474) scale(1.3)"/></g>' +
+    '<g id="shoutFx"></g>';
+}
+const SCENES = { s1: sceneS1, s2: sceneS2, s3: sceneS3, s4: sceneS4, s5: sceneS5, s6: sceneS6 };
+
+function mapHTML(i) {
+  const names = ['Casa', 'Trilha', 'Floresta', 'Vovó'];
+  return '<div class="map" role="img" aria-label="Mapa da aventura: você está em ' + names[i] + '">' + names.map((n, k) =>
+    '<div class="stop ' + (k < i ? 'past' : k === i ? 'here' : '') + '"><span class="pin"></span><span class="sn">' + n + '</span></div>').join('<span class="road"></span>') + '</div>';
+}
+function storyHTML(id) {
+  const d = STORY[id];
+  const extra = '';
+  const shout = id === 's6' ? '<div class="shout"><button class="btn" data-act="shout" id="shoutBtn">SOCORRO!</button><div class="meter" aria-hidden="true"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div></div>' : '';
+  return '<div class="split two">' +
+    '<div class="card visual scene" style="--skyc:' + d.sky + '">' +
+    '<svg class="fill" viewBox="' + (d.vb || '0 0 800 500') + '" preserveAspectRatio="xMidYMax slice" role="group" aria-label="' + d.alt + '">' + SCENES[id]() + '</svg>' +
+    '<div class="coach' + (d.coach === 'bottom' ? ' bottom' : '') + '"><svg class="bird" viewBox="0 0 48 48" aria-hidden="true"><use href="#bird"/></svg>' +
+    '<div class="cbub" id="cbub"><p id="cmsg"></p><div class="crow"><span class="ccount" id="ccount"></span>' +
+    '<button class="mini" data-act="speakc" aria-label="Ouvir o desafio">' + ic('vol') + '</button>' +
+    '<button class="mini" data-act="skip" aria-label="Pular o desafio">Pular</button></div></div></div>' + extra + '</div>' +
+    '<div class="card panel"><p class="eyebrow">' + d.chap + '</p>' + mapHTML(d.map) +
+    '<p class="storytext">' + d.text + '</p>' + shout +
+    '<div class="row"><div class="dots"><span class="dot' + (d.page === 1 ? ' on' : '') + '"></span><span class="dot' + (d.page === 2 ? ' on' : '') + '"></span></div><span class="hint">Página ' + d.page + ' de 2</span></div></div></div>';
+}
+
+/* ---------- views das demais telas ---------- */
+const capBtn = '<button class="capbtn" data-act="guide" aria-label="Abrir orientação pedagógica">' + ic('cap') + 'Orientação</button>';
+const VIEWS = {};
+STORY_IDS.forEach((id) => { VIEWS[id] = () => storyHTML(id); });
+
+VIEWS.cover = () => '<div class="split two"><div class="card visual scene" style="--skyc:#BDE8F5">' +
+  '<svg class="fill" viewBox="0 0 800 500" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Chapeuzinho Vermelho na trilha, com o Lobo espiando atrás de uma árvore">' +
+  '<use href="#bg-trilha"/><use href="#wolf-head" transform="translate(466 398) scale(1.7)"/><use href="#tree-a" transform="translate(560 456) scale(1.5)"/><use href="#char-chapeu" transform="translate(290 456) scale(1.5)"/></svg></div>' +
+  '<div class="card panel"><p class="eyebrow">Os Contos Dão Conta · Aprender para Ser</p><h1 class="bigtitle">Chapeuzinho Vermelho</h1>' +
+  '<p class="lead">Uma aventura para ler, sentir e mexer o corpo. A Pipoca pede a sua ajuda em cada página: toque, procure, escolha e respire junto com a Chapeuzinho.</p>' +
+  '<div class="chips"><span class="pill">6 desafios na história</span><span class="pill">1 tela de valores</span><span class="pill">3 telas de emoção</span><span class="pill">2 exercícios de corpo</span></div>' +
+  '<div class="row"><button class="btn" data-act="start">Começar a aventura ' + ic('r') + '</button></div>' +
+  '<p class="hint">Protótipo interativo. Funciona no celular, no tablet e no computador.</p></div></div>';
+
+VIEWS.values = () => '<div class="split two"><div class="card visual scene" style="--skyc:#CDEBFF">' +
+  '<svg class="fill" viewBox="0 0 800 500" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Chapeuzinho pensativa em um campo de flores"><use href="#bg-flores"/><use href="#char-chapeu" transform="translate(400 484) scale(1.7)"/></svg>' +
+  '<div class="bubble"><p class="bubbletext">Contos são passaportes para o saber…</p><span class="tail t1"></span><span class="tail t2"></span></div></div>' +
+  '<div class="card panel"><div class="eyerow"><p class="eyebrow">Valores</p>' + capBtn + '</div><h2 class="title">Escutar o que sentimos por dentro</h2>' +
+  '<p class="lead">Toda história é um passaporte: ela nos leva a lugares novos e nos ajuda a entender o que sentimos. Na história de hoje, a Chapeuzinho sentiu um friozinho na barriga.</p>' +
+  '<p class="lead">Será que ele queria dizer alguma coisa? Vamos descobrir juntos.</p></div></div>';
+
+VIEWS.quiz = () => '<div class="split two"><div class="card visual scene" style="--skyc:#CFE9C9">' +
+  '<svg class="fill" viewBox="0 0 800 500" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Chapeuzinho encontra o Lobo na trilha"><use href="#bg-floresta"/><use href="#char-chapeu" transform="translate(280 470) scale(1.3)"/><use href="#char-lobo" transform="translate(520 470) scale(1.1)"/></svg></div>' +
+  '<div class="card panel"><div class="eyerow"><p class="eyebrow">Atividade de valores</p>' + capBtn + '</div>' +
+  '<h2 class="title">Quando o Lobo perguntou aonde ela ia, o que Chapeuzinho poderia ter feito?</h2>' +
+  '<div class="opts">' + QUIZ.map((o, i) => '<button class="opt" data-act="quiz" data-v="' + i + '" aria-pressed="false"><span class="let">' + 'ABCD'.charAt(i) + '</span><span>' + o.t + '</span></button>').join('') + '</div>' +
+  '<div id="qfb"></div></div></div>';
+
+const BODYSVG = '<svg viewBox="0 0 200 400" role="img" aria-label="Desenho de uma criança de frente"><ellipse cx="100" cy="390" rx="58" ry="8" fill="#2B2540" opacity="0.12"/>' +
+  '<rect x="76" y="258" width="22" height="116" rx="10" fill="#5B5A99"/><rect x="102" y="258" width="22" height="116" rx="10" fill="#5B5A99"/>' +
+  '<ellipse cx="87" cy="376" rx="20" ry="9" fill="#5A3A2A"/><ellipse cx="113" cy="376" rx="20" ry="9" fill="#5A3A2A"/>' +
+  '<path d="M62 112 Q38 150 34 224" class="limbk"/><path d="M138 112 Q162 150 166 224" class="limbk"/>' +
+  '<circle cx="34" cy="234" r="12" fill="#F3C29A"/><circle cx="166" cy="234" r="12" fill="#F3C29A"/>' +
+  '<path d="M62 110 Q60 96 76 94 L124 94 Q140 96 138 110 L142 200 Q142 268 100 268 Q58 268 58 200Z" fill="#4FA3A5"/>' +
+  '<rect x="90" y="82" width="20" height="18" fill="#F3C29A"/><circle cx="100" cy="58" r="38" fill="#F3C29A"/>' +
+  '<path d="M62 54 Q62 16 100 16 Q138 16 138 54 Q124 36 100 36 Q76 36 62 54Z" fill="#6B3F2A"/>' +
+  '<circle cx="86" cy="62" r="3.2" fill="#2B2540"/><circle cx="114" cy="62" r="3.2" fill="#2B2540"/><path d="M90 76 Q100 84 110 76" class="face-line"/></svg>';
+VIEWS.body = () => '<div class="split two"><div class="card visual bodyvis"><div class="bodymap">' + BODYSVG +
+  BODY_ZONES.map((z) => '<button class="zone" style="' + z.pos + '" data-act="zone" data-v="' + z.id + '" aria-pressed="false" aria-label="' + z.label + '">' + z.name + '</button>').join('') + '</div></div>' +
+  '<div class="card panel"><div class="eyerow"><p class="eyebrow">Emoção · 1 de 3</p>' + capBtn + '</div><h2 class="title">Onde o medo mora no seu corpo?</h2>' +
+  '<p class="lead">Quando o Lobo apareceu, Chapeuzinho sentiu um friozinho na barriga. Toque nas partes do corpo onde você sente o seu medo. Não existe lugar certo ou errado.</p>' +
+  '<div class="chips">' + BODY_LIST.map((z) => '<button class="chip" data-act="zone" data-v="' + z.id + '" aria-pressed="false">' + z.name + '</button>').join('') + '</div>' +
+  '<p class="hint" id="bodySum"></p></div></div>';
+
+VIEWS.fear = () => '<div class="split two"><div class="card visual fearvis"><div class="fearwrap"><div class="fear" id="fearBall"></div></div><p class="readout" id="fearOut"></p></div>' +
+  '<div class="card panel"><div class="eyerow"><p class="eyebrow">Emoção · 2 de 3</p>' + capBtn + '</div><h2 class="title">Qual é o tamanho desse medo?</h2>' +
+  '<p class="lead">Mexa o controle até encontrar o tamanho do medo da Chapeuzinho quando o Lobo apareceu, ou do seu medo.</p>' +
+  '<label class="lab" for="fearrange">Tamanho do medo</label><input class="slider" id="fearrange" type="range" min="0" max="10" step="1" value="' + state.fear + '">' +
+  '<div class="row" style="justify-content:space-between"><span class="hint">0 · quase nada</span><span class="hint">10 · enorme</span></div>' +
+  '<p class="hint">Depois da respiração, vamos medir de novo para ver se mudou.</p></div></div>';
+
+VIEWS.helps = () => '<div class="card panel" style="justify-content:flex-start"><div class="eyerow"><p class="eyebrow">Emoção · 3 de 3</p>' + capBtn + '</div>' +
+  '<h2 class="title">O que ajuda o medo a ficar menor?</h2><p class="lead">Escolha as ferramentas que você gostaria de usar quando sentir um friozinho na barriga. Pode escolher quantas quiser.</p>' +
+  '<div class="helpgrid">' + HELPS.map((h) => '<button class="helpcard" data-act="help" data-v="' + h.id + '" aria-pressed="false"><span class="hic">' + ic(h.icon) + '</span><span>' + h.name + '</span></button>').join('') + '</div>' +
+  '<div class="infobox" id="helpSum"></div></div>';
+
+VIEWS.breath = () => '<div class="split two"><div class="card visual breathbox"><div class="orb" id="orb"><svg class="orbicon" viewBox="0 0 120 120" aria-hidden="true">' +
+  '<path d="M22 54h76l-9 50H31z" fill="#B9793F"/><path d="M34 54 Q60 6 86 54" class="handle"/><circle cx="46" cy="46" r="10" fill="#C9362B"/><circle cx="68" cy="43" r="10" fill="#FFF6DE"/><circle cx="84" cy="50" r="8" fill="#FFD45E"/></svg></div>' +
+  '<div class="orbtext"><div class="orbword" id="bword"></div><div class="orbcount" id="bcount"></div></div></div>' +
+  '<div class="card panel"><div class="eyerow"><p class="eyebrow">Corpo · Respiração</p>' + capBtn + '</div><h2 class="title">Respire como na cesta da vovó</h2>' +
+  '<div class="infobox" id="binstr"></div><div class="cdots" aria-label="Ciclos de respiração"><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span><span class="cdot"></span><span class="hint" id="bcyc"></span></div>' +
+  '<div class="row"><button class="btn good" id="bToggle" data-act="breathToggle"></button></div>' +
+  '<div class="row" id="bAfter" hidden><span class="lab">E o medo agora?</span>' +
+  [['menor', 'Menor'], ['igual', 'Igual'], ['maior', 'Maior']].map((o) => '<button class="chip" data-act="after" data-v="' + o[0] + '" aria-pressed="false">' + o[1] + '</button>').join('') + '</div>' +
+  '<p class="hint">Atividade educativa. A criança pode parar a qualquer momento.</p></div></div>';
+
+/* ---------- boneco articulado do alongamento ---------- */
+const RIG_CFG = Object.assign({}, ART.CFG.chapeu, { basket: false });
+const RIG_BASE = [
+  { t: 0, h: -3, aL: 168, eL: 8, aR: -168, eR: -8, lL: 2, lR: -2, kL: 0, kR: 0, x: 0, y: 0, ex: 'happy' },
+  { t: 0, h: 0, aL: 12, eL: 0, aR: -12, eR: 0, lL: 2, lR: -2, kL: 0, kR: 0, x: 0, y: 0, ex: 'happy' },
+  { t: 0, h: 0, aL: 96, eL: 0, aR: -96, eR: 0, lL: 3, lR: -3, kL: 0, kR: 0, x: 0, y: 0, ex: 'happy' },
+  { t: 0, h: 7, aL: -35, eL: -103, aR: 35, eR: 103, lL: 1, lR: -1, kL: 0, kR: 0, x: 0, y: 0, ex: 'closed' }
+];
+const RIG_KEYS = ['root', 'torso', 'head', 'armL', 'foreL', 'armR', 'foreR', 'legL', 'shinL', 'legR', 'shinR'];
+const RIG = { raf: 0, last: 0, cur: null, els: null, ex: '', idx: -1 };
+function rigSVG() {
+  const base = Object.assign({}, ART.IDLE, { aL: 6, aR: -6 });
+  return '<svg class="fill" viewBox="0 0 300 410" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Chapeuzinho fazendo o alongamento">' +
+    '<circle cx="60" cy="60" r="110" fill="url(#g-sun)"/>' +
+    '<path d="M-700 318 Q-400 290 -160 316 T120 300 T330 322 T700 296 T1000 316 L1000 900 L-700 900Z" fill="url(#g-hillMid)"/><path d="M-700 366 Q-300 346 0 362 T300 362 T700 352 T1000 366 L1000 900 L-700 900Z" fill="url(#g-ground)"/>' +
+    '<use href="#fl" transform="translate(-120 396) scale(1.2)" style="color:#FFD84A"/><use href="#fl" transform="translate(-60 380)" style="color:#fff"/><use href="#fl" transform="translate(360 392) scale(1.2)" style="color:#E8604F"/><use href="#fl" transform="translate(30 392) scale(1.2)" style="color:#E8604F"/><use href="#fl" transform="translate(268 396) scale(1.1)" style="color:#F29AC0"/><use href="#fl" transform="translate(244 384)" style="color:#FFD84A"/><use href="#tuft" transform="translate(60 398) scale(1.3)"/><use href="#tuft" transform="translate(228 402) scale(1.2)"/>' +
+    '<ellipse cx="150" cy="392" rx="84" ry="11" fill="#2B2540" opacity=".18"/>' +
+    '<g id="pr0"><path d="M24 26 Q150 4 276 28" stroke="#6B4425" stroke-width="9" fill="none" stroke-linecap="round"/><g class="leafy"><ellipse cx="60" cy="24" rx="20" ry="9" fill="url(#g-leafM)"/><ellipse cx="236" cy="26" rx="20" ry="9" fill="url(#g-leafM)"/><ellipse cx="150" cy="14" rx="22" ry="9" fill="url(#g-leafL)"/></g><circle cx="94" cy="40" r="11" fill="#D93A30" class="ol1"/><circle cx="206" cy="40" r="11" fill="#D93A30" class="ol1"/><path d="M94 29 Q98 22 104 24 M206 29 Q210 22 216 24" stroke="#3E8A3E" stroke-width="3" fill="none"/><circle cx="91" cy="37" r="3" fill="#fff" opacity=".6"/><circle cx="203" cy="37" r="3" fill="#fff" opacity=".6"/></g>' +
+    '<g id="pr1" style="display:none"><g class="leafy"><path d="M20 130 Q36 114 52 130 Q36 140 20 130Z" fill="url(#g-leafL)" class="ol1"/></g><g class="leafy" style="animation-delay:-1.6s"><path d="M250 90 Q266 74 282 90 Q266 100 250 90Z" fill="url(#g-leafM)" class="ol1"/></g><g class="leafy" style="animation-delay:-.8s"><path d="M236 190 Q252 174 268 190 Q252 200 236 190Z" fill="url(#g-leafL)" class="ol1"/></g></g>' +
+    '<g id="pr2" style="display:none"><path d="M10 140 Q40 120 74 140" class="swoosh"/><path d="M6 200 Q50 176 96 200" class="swoosh" style="animation-delay:-.5s"/><path d="M226 150 Q262 128 296 150" class="swoosh" style="animation-delay:-.9s"/><path d="M200 214 Q250 190 294 214" class="swoosh" style="animation-delay:-.3s"/></g>' +
+    '<g id="pr3" style="display:none"><path class="heart" d="M60 160 q-9 -12 -18 -2 q-6 10 18 24 q24 -14 18 -24 q-9 -10 -18 2Z" fill="#E8604F"/><path class="heart" style="animation-delay:-1s" d="M236 130 q-8 -10 -16 -2 q-5 9 16 21 q21 -12 16 -21 q-8 -8 -16 2Z" fill="#F29AC0"/><path class="heart" style="animation-delay:-2s" d="M210 200 q-7 -9 -14 -2 q-4 8 14 18 q18 -10 14 -18 q-7 -7 -14 2Z" fill="#E8604F"/></g>' +
+    '<g id="rigHost" transform="translate(150 392)">' + ART.humanoid(RIG_CFG, base) + '</g></svg>';
+}
+function rigTarget(now) {
+  const sk = state.stretchTk; const done = sk >= STRETCH_TICKS; const idx = done ? 3 : Math.min(3, Math.floor(sk / 50)); const inn = (sk % 50) / 5;
+  const t = REDUCED ? 0 : now / 1000; const p = Object.assign({}, RIG_BASE[idx]);
+  const w = (f, a, ph) => Math.sin(t * f + (ph || 0)) * a;
+  if (idx === 0) { p.aL += w(1.6, 3); p.aR -= w(1.6, 3); p.y = -3 + w(2, 1.5); p.t = w(0.9, 1.5); }
+  else if (idx === 1) {
+    const right = state.stretchRun ? (Math.floor(inn / 2.5) % 2 === 0) : true;
+    if (right) { p.t = 15; p.aL = 168; p.eL = 38; p.aR = -14; p.eR = 0; p.h = 7; } else { p.t = -15; p.aR = -168; p.eR = -38; p.aL = 14; p.eL = 0; p.h = -7; }
+    p.t += w(1.2, 1.2);
+  } else if (idx === 2) { p.aL += w(2.4, 6); p.aR -= w(2.4, 6, 1); p.eL += w(2.4, 8, 1); p.eR -= w(2.4, 8, 2); p.h = w(1.2, 7); p.y = w(2.4, 1.2); }
+  else { p.h = 7 + w(1.4, 2); p.t = w(1, 1.5); p.y = w(1.8, 1); if (done) { p.ex = 'happy'; } }
+  p.idx = idx; return p;
+}
+function rigApply(p) {
+  const T = ART.rigT(p, ART.CFG.chapeu.sx);
+  RIG_KEYS.forEach((k) => { const el = RIG.els[k]; if (el) { el.setAttribute('transform', T[k]); } });
+  if (RIG.cb) { RIG.cb.setAttribute('transform', T.torso); }
+}
+function rigFrame(now) {
+  if (!RIG.els || !$('#rigHost')) { RIG.raf = 0; return; }
+  const dt = Math.min(0.5, (now - RIG.last) / 1000 || 0.016); RIG.last = now;
+  const tg = rigTarget(now); const k = 1 - Math.exp(-dt * 8);
+  Object.keys(tg).forEach((key) => { if (typeof tg[key] === 'number' && key !== 'idx') { RIG.cur[key] += (tg[key] - RIG.cur[key]) * k; } });
+  rigApply(RIG.cur);
+  if (tg.ex !== RIG.ex) {
+    RIG.ex = tg.ex; const hg = RIG.els.head && RIG.els.head.firstElementChild;
+    if (hg) { hg.innerHTML = ART.headMarkup(Object.assign({}, RIG_CFG, { expr: tg.ex })); }
+  }
+  if (tg.idx !== RIG.idx) { RIG.idx = tg.idx; ['pr0', 'pr1', 'pr2', 'pr3'].forEach((id, i) => { const e = $('#' + id); if (e) { e.style.display = i === tg.idx ? '' : 'none'; } }); }
+  RIG.raf = requestAnimationFrame(rigFrame);
+}
+function rigStart() {
+  if (RIG.raf) { cancelAnimationFrame(RIG.raf); RIG.raf = 0; }
+  const host = $('#rigHost'); if (!host) { return; }
+  RIG.els = {}; RIG_KEYS.forEach((k) => { RIG.els[k] = host.querySelector('.p-' + k); }); RIG.cb = host.querySelector('.p-capeback');
+  RIG.cur = Object.assign({ t: 0, h: 0, x: 0, y: 0, kL: 0, kR: 0 }, ART.IDLE, { aL: 6, aR: -6 }); RIG.ex = 'happy'; RIG.idx = -1; RIG.last = performance.now();
+  RIG.raf = requestAnimationFrame(rigFrame);
+}
+VIEWS.stretch = () => '<div class="split two"><div class="card visual scene posebox" id="poseBox"></div>' +
+  '<div class="card panel"><div class="eyerow"><p class="eyebrow">Corpo · Alongamento</p>' + capBtn + '</div><h2 class="title" id="sName"></h2>' +
+  '<div class="row" style="flex-wrap:nowrap"><div class="ringwrap"><svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" class="ringbg"/><circle cx="50" cy="50" r="44" class="ringfg" id="sRing"/></svg><div class="ringnum" id="sCount"></div></div><p class="lead" id="sDesc"></p></div>' +
+  '<div class="chips" aria-label="Posturas do alongamento">' + POSES.map((p, i) => '<span class="pstep" id="ps' + i + '">' + (i + 1) + '. ' + p.n + '</span>').join('') + '</div>' +
+  '<div class="row"><button class="btn good" id="sToggle" data-act="stretchToggle"></button><button class="btn alt" id="sSkip" data-act="stretchSkip">Pular postura</button></div>' +
+  '<p class="hint">Cada postura dura 10 segundos. A criança pode pular se algo incomodar.</p></div></div>';
+
+VIEWS.create = () => '<div class="split two"><div class="card visual stagebox"><svg class="stagesvg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cenário montado pela criança">' +
+  SCENERIES.map((x) => '<use href="#bg-' + x.id + '" id="cb-' + x.id + '"/>').join('') +
+  '<use href="#char-chapeu" transform="translate(150 462) scale(1.15)" id="cc-chapeu"/><use href="#char-mama" transform="translate(285 462) scale(1.1)" id="cc-mama"/><use href="#char-vovo" transform="translate(420 462) scale(1.1)" id="cc-vovo"/><use href="#char-lobo" transform="translate(570 464) scale(.95)" id="cc-lobo"/><use href="#char-cacador" transform="translate(700 462) scale(1.05)" id="cc-cacador"/></svg></div>' +
+  '<div class="card panel"><div class="eyerow"><p class="eyebrow">Agora a história é sua!</p>' + capBtn + '</div>' +
+  '<span class="lab">1. Escolha o cenário</span><div class="chips">' + SCENERIES.map((x) => '<button class="chip" data-act="scenery" data-v="' + x.id + '" aria-pressed="false">' + x.name + '</button>').join('') + '</div>' +
+  '<span class="lab">2. Quem entra na história?</span><div class="chips">' + CHARS.map((x) => '<button class="chip" data-act="char" data-v="' + x.id + '" aria-pressed="false">' + x.name + '</button>').join('') + '</div>' +
+  '<label class="lab" for="ending">3. O que aconteceu depois?</label><textarea class="ta" id="ending" placeholder="Escreva do seu jeito. O que o Lobo fez? E a Chapeuzinho?"></textarea></div></div>';
+
+function portfolioData() {
+  const S = state;
+  const doneN = STORY_IDS.filter((i) => S.done[i]).length;
+  const skipN = STORY_IDS.filter((i) => S.skipped[i]).length;
+  const tries = S.tries.s2 + S.tries.s3 + S.tries.s5;
+  const bodyNames = BODY_LIST.filter((z) => S.body.includes(z.id)).map((z) => z.name.toLowerCase());
+  const emoParts = (S.body.length ? 1 : 0) + (S.fearTouched ? 1 : 0) + (S.helps.length ? 1 : 0);
+  const bCycles = Math.min(4, Math.floor(S.breathTk / 60));
+  const posesDone = Math.min(4, Math.floor(S.stretchTk / 50));
+  const bDone = S.breathTk >= BREATH_TICKS, sDone = S.stretchTk >= STRETCH_TICKS;
+  const text = S.ending.trim();
+  const flags = [doneN === 6, S.quiz !== null, emoParts === 3, bDone && sDone, text.length > 0];
+  const mk = (done, started) => (done ? { status: 'Concluído', cls: 'done', isDone: true } : started ? { status: 'Em andamento', cls: 'mid', isDone: false } : { status: 'Não iniciado', cls: '', isDone: false });
+  const sceneryName = (SCENERIES.find((x) => x.id === S.scenery) || {}).name;
+  const charNames = CHARS.filter((x) => S.chars[x.id]).map((x) => x.name);
+  return {
+    flags: flags, count: flags.filter(Boolean).length,
+    items: [
+      Object.assign({ title: 'Desafios da história', l1: doneN + ' de 6 desafios concluídos' + (skipN ? ' (' + skipN + ' pulado' + (skipN > 1 ? 's' : '') + ')' : ''), l2: 'Tentativas extras até acertar: ' + tries }, mk(doneN === 6, doneN > 0)),
+      Object.assign({ title: 'Valores', l1: S.quiz !== null ? 'Resposta: “' + QUIZ[S.quiz].t + '”' : 'Ainda não respondeu.', l2: S.quiz !== null ? (QUIZ[S.quiz].good ? 'Escolheu uma ação de cuidado.' : 'Refletiu sobre outra possibilidade.') : '' }, mk(S.quiz !== null, S.quiz !== null)),
+      Object.assign({ title: 'Emoção', l1: bodyNames.length ? 'O medo apareceu em: ' + bodyNames.join(', ') + '.' : 'Ainda não marcou onde sente.', l2: 'Tamanho do medo: ' + (S.fearTouched ? S.fear + ' de 10' : 'não medido') + (S.after ? ' · Depois da respiração: ' + S.after : '') + ' · Ferramentas escolhidas: ' + S.helps.length }, mk(emoParts === 3, emoParts > 0)),
+      Object.assign({ title: 'Corpo', l1: 'Respiração: ' + bCycles + ' de 4 ciclos', l2: 'Alongamento: ' + posesDone + ' de 4 posturas' }, mk(bDone && sDone, bCycles > 0 || posesDone > 0)),
+      Object.assign({ title: 'Criação', l1: text ? '“' + (text.length > 110 ? text.slice(0, 110) + '…' : text) + '”' : 'Ainda não escreveu o final.', l2: 'Cenário: ' + sceneryName + ' · Personagens: ' + (charNames.length ? charNames.join(', ') : 'nenhum') }, mk(text.length > 0, text.length > 0))
+    ]
+  };
+}
+VIEWS.portfolio = () => {
+  const pf = portfolioData();
+  const roster = [{ name: 'Ana (você, agora)', pct: Math.round(pf.count / 5 * 100), note: pf.count + ' de 5 etapas', cls: 'me' }, { name: 'Pedro (fictício)', pct: 80, note: '4 de 5 etapas', cls: '' }, { name: 'Luísa (fictícia)', pct: 40, note: '2 de 5 etapas', cls: '' }];
+  return '<div class="split two"><div class="card panel" style="justify-content:flex-start"><div class="pfhead"><div class="avatar" aria-hidden="true">A</div><div><h2 class="title" style="font-size:26px">Portfólio da Ana</h2><p class="hint">Exemplo · 6 anos · Chapeuzinho Vermelho</p></div></div>' +
+    '<div class="row"><div class="stars" role="img" aria-label="' + pf.count + ' de 5 etapas concluídas">' + pf.flags.map((f) => '<svg class="star' + (f ? ' on' : '') + '" viewBox="0 0 24 24" aria-hidden="true">' + P.star + '</svg>').join('') + '</div><span class="hint">' + pf.count + ' de 5 etapas · ' + state.stars + ' estrelinhas coletadas</span></div>' +
+    pf.items.map((it) => '<div class="pfitem"><div class="pftop"><span class="pftitle">' + it.title + '</span><span class="stt ' + it.cls + '">' + (it.isDone ? ic('check') : '') + it.status + '</span></div><p class="pfline">' + it.l1 + '</p><p class="pfline">' + it.l2 + '</p></div>').join('') + '</div>' +
+    '<div class="card panel" style="justify-content:flex-start"><div class="eyerow"><p class="eyebrow">Visão do educador</p></div><h2 class="title" style="font-size:26px">Turma de exemplo</h2>' +
+    '<p class="hint">Os registros da Ana vêm do que você fez agora neste protótipo. As outras crianças são fictícias, só para ilustrar a visão da escola.</p>' +
+    roster.map((r) => '<div class="rosterrow"><div class="pftop"><span class="pftitle">' + r.name + '</span><span class="hint">' + r.note + '</span></div><div class="bar"><span class="barfill ' + r.cls + '" style="width:' + r.pct + '%"></span></div></div>').join('') +
+    '<div class="infobox">Em produção, cada ação fica salva no banco de dados: quem fez, quando e o que respondeu. A família vê só a própria criança; a escola vê só a própria turma.</div></div></div>';
+};
+
+/* ---------- mounts (estado persistido ao voltar numa tela) ---------- */
+const MOUNT = {};
+function markDone(el) { if (el) { el.classList.add('done'); } }
+
+MOUNT.s1 = () => {
+  $$('[data-act="treat"]').forEach((el) => { if (state.treats[Number(el.dataset.v)]) { el.parentNode.style.display = 'none'; } });
+  if (state.done.s1) { setCoach(STORY.s1.ok, 'ok'); setCount('Completo'); $('[data-act="skip"]').hidden = true; }
+  else { setCoach(STORY.s1.prompt); setCount(state.treats.filter(Boolean).length + '/3'); }
+};
+MOUNT.s2 = () => {
+  if (state.done.s2) { $('#chapMove').style.transform = 'translate(250px,-6px)'; setCoach(STORY.s2.ok, 'ok'); setCount('Completo'); $('[data-act="skip"]').hidden = true; }
+  else { setCoach(STORY.s2.prompt); }
+};
+MOUNT.s3 = () => {
+  if (state.done.s3) { $('#wolfPop').style.opacity = 1; $('#wolfBushW').style.transform = 'translate(90px,0)'; $('#wolfBushW .blink').style.display = 'none'; $$('[data-act="bush"]').forEach(markDone); setCoach(STORY.s3.ok, 'ok'); setCount('Completo'); $('[data-act="skip"]').hidden = true; }
+  else { setCoach(STORY.s3.prompt); }
+};
+MOUNT.s4 = () => {
+  if (state.done.s4) { markDone($('[data-act="belly"]')); setCoach(STORY.s4.ok, 'ok'); setCount('Completo'); $('[data-act="skip"]').hidden = true; }
+  else { setCoach(STORY.s4.prompt); }
+};
+MOUNT.s5 = () => {
+  const ids = ['olhos', 'orelhas', 'boca'];
+  ids.forEach((f, i) => { if (state.s5 > i) { markDone($('[data-act="feat"][data-v="' + f + '"]')); } });
+  if (state.done.s5) { setCoach(STORY.s5.ok, 'ok'); setCount('Completo'); $('[data-act="skip"]').hidden = true; }
+  else { setCoach(FEATS[state.s5].q); setCount(state.s5 + '/3'); }
+};
+MOUNT.s6 = () => {
+  const dots = $$('.mdot');
+  dots.forEach((d, i) => d.classList.toggle('on', i < state.shouts));
+  if (state.done.s6) {
+    $('#hunterW').style.opacity = 1; $('#vovoW').style.opacity = 1; $('#wolfW').style.display = 'none';
+    $('#shoutBtn').disabled = true; setCoach(STORY.s6.ok, 'ok'); setCount('Completo'); $('[data-act="skip"]').hidden = true;
+  } else { setCoach(STORY.s6.prompt); setCount(state.shouts + '/3'); }
+};
+MOUNT.quiz = () => refreshQuiz();
+MOUNT.body = () => refreshBody();
+MOUNT.fear = () => { refreshFear(); };
+MOUNT.helps = () => refreshHelps();
+MOUNT.breath = () => updateBreath(true);
+MOUNT.stretch = () => updateStretch(true);
+MOUNT.create = () => { $('#ending').value = state.ending; refreshCreate(); };
+
+/* ---------- refresh ---------- */
+function refreshQuiz() {
+  $$('.opt').forEach((b, i) => { const sel = state.quiz === i; b.className = 'opt' + (sel ? (QUIZ[i].good ? ' goodsel' : ' sel') : ''); b.setAttribute('aria-pressed', String(sel)); });
+  const fb = $('#qfb');
+  if (state.quiz === null) { fb.innerHTML = '<p class="hint">Escolha uma alternativa para ver o retorno. Não existe resposta que reprova.</p>'; return; }
+  const o = QUIZ[state.quiz];
+  fb.innerHTML = '<div class="fb' + (o.good ? '' : ' think') + '">' + ic(o.good ? 'check' : 'info') + '<span>' + o.fb + '</span></div>';
+  fb.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'nearest' });
+}
+function refreshBody() {
+  $$('[data-act="zone"]').forEach((b) => { const on = state.body.includes(b.dataset.v); b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
+  const names = BODY_LIST.filter((z) => state.body.includes(z.id)).map((z) => z.name);
+  $('#bodySum').textContent = names.length ? 'Você marcou: ' + names.join(', ') + '.' : 'Toque no corpo ou nos botões para marcar. Pode marcar quantos lugares quiser.';
+}
+function fearInfo(f) {
+  const mix = (a, b) => Math.round(a + (b - a) * f / 10);
+  return { px: 70 + f * 14, bg: 'rgb(' + mix(255, 201) + ',' + mix(200, 54) + ',' + mix(87, 43) + ')', word: f <= 1 ? 'Quase nada' : f <= 3 ? 'Pequeno' : f <= 6 ? 'Médio' : f <= 8 ? 'Grande' : 'Enorme' };
+}
+function refreshFear() {
+  const i = fearInfo(state.fear); const b = $('#fearBall');
+  b.style.width = i.px + 'px'; b.style.height = i.px + 'px'; b.style.background = i.bg;
+  $('#fearOut').textContent = state.fear + ' de 10 · ' + i.word;
+}
+function refreshHelps() {
+  $$('.helpcard').forEach((b) => { const on = state.helps.includes(b.dataset.v); b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
+  const n = state.helps.length;
+  $('#helpSum').textContent = n ? 'Você escolheu ' + n + (n === 1 ? ' ferramenta' : ' ferramentas') + '. Que tal testar a respiração e o alongamento agora?' : 'Nenhuma ferramenta escolhida ainda. Toque nos cartões para escolher.';
+}
+const SKY = { floresta: '#CFE9C9', trilha: '#BDE8F5', casa: '#BDE8F5', rio: '#BDE8F5', flores: '#CDEBFF', noite: '#2B3A67' };
+function refreshCreate() {
+  $('.stagebox').style.background = SKY[state.scenery];
+  SCENERIES.forEach((x) => $('#cb-' + x.id).classList.toggle('off', state.scenery !== x.id));
+  CHARS.forEach((x) => $('#cc-' + x.id).classList.toggle('off', !state.chars[x.id]));
+  $$('[data-act="scenery"]').forEach((b) => { const on = state.scenery === b.dataset.v; b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
+  $$('[data-act="char"]').forEach((b) => { const on = !!state.chars[b.dataset.v]; b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
+}
+let lastBWord = '';
+function breathInfo() {
+  const t = state.breathTk / 5; const done = state.breathTk >= BREATH_TICKS;
+  if (done) { return { word: 'Muito bem!', scale: 0.8, count: '', instr: 'Você completou os 4 ciclos. Repare como o seu corpo está agora.', bg: '#9AD08B', done: true, cycles: 4 }; }
+  if (state.breathTk === 0 && !state.breathRun) { return { word: 'Pronto?', scale: 0.55, count: '', instr: 'Sentado com as costas apoiadas? Quando quiser, toque em Começar.', bg: '#FFC857', done: false, cycles: 0 }; }
+  const w = t % 12; const cycles = Math.floor(t / 12);
+  if (w < 4) { return { word: 'Inspire', scale: 0.55 + 0.45 * (w / 4), count: Math.ceil(4 - w), instr: 'Pelo nariz, como quem cheira os doces da cesta.', bg: '#FFC857', done: false, cycles: cycles }; }
+  if (w < 6) { return { word: 'Segure', scale: 1, count: Math.ceil(6 - w), instr: 'Segure o ar bem de levinho.', bg: '#9AD08B', done: false, cycles: cycles }; }
+  return { word: 'Solte', scale: 1 - 0.45 * ((w - 6) / 6), count: Math.ceil(12 - w), instr: 'Pela boca, devagar, como quem sopra a sopa quente.', bg: '#8FD3EE', done: false, cycles: cycles };
+}
+function updateBreath(force) {
+  const o = $('#orb'); if (!o) { return; }
+  const b = breathInfo();
+  o.style.transform = 'scale(' + b.scale.toFixed(3) + ')'; o.style.background = b.bg;
+  $('#bword').textContent = b.word; $('#bcount').textContent = b.count; $('#binstr').textContent = b.instr;
+  $$('.cdot').forEach((d, i) => { d.className = 'cdot' + (i < b.cycles ? ' done' : (i === b.cycles && !b.done && state.breathTk > 0 ? ' on' : '')); });
+  $('#bcyc').textContent = 'Ciclo ' + Math.min(4, b.cycles + (b.done ? 0 : 1)) + ' de 4';
+  $('#bToggle').innerHTML = ic(state.breathRun ? 'pause' : 'play') + (b.done ? 'Repetir' : state.breathRun ? 'Pausar' : (state.breathTk > 0 ? 'Continuar' : 'Começar'));
+  $('#bAfter').hidden = !b.done;
+  $$('[data-act="after"]').forEach((c) => { const on = state.after === c.dataset.v; c.classList.toggle('on', on); c.setAttribute('aria-pressed', String(on)); });
+  if (b.word !== lastBWord || force) { lastBWord = b.word; say(b.word + '. ' + b.instr); }
+  if (b.done && !state.breathStar) { state.breathStar = true; addStars(1); celebrate('Respiração completa!'); }
+}
+let lastPose = -1;
+function updateStretch(force) {
+  const box = $('#poseBox'); if (!box) { return; }
+  const sk = state.stretchTk; const done = sk >= STRETCH_TICKS; const idx = Math.min(3, Math.floor(sk / 50)); const inn = sk % 50;
+  if (!$('#rigHost')) { box.innerHTML = rigSVG(); rigStart(); }
+  if (idx !== lastPose || force) { lastPose = idx; say(POSES[idx].n + '. ' + POSES[idx].d); }
+  $('#sName').textContent = done ? 'Alongamento completo!' : POSES[idx].n;
+  $('#sDesc').textContent = done ? 'Você percorreu a trilha inteira. Que tal sacudir as mãos e dar um sorriso?' : POSES[idx].d;
+  $('#sCount').textContent = done ? '0' : String(Math.ceil((50 - inn) / 5));
+  $('#sRing').style.strokeDashoffset = (276.46 * (done ? 1 : inn / 50)).toFixed(1);
+  POSES.forEach((p, i) => { $('#ps' + i).className = 'pstep' + (sk >= (i + 1) * 50 ? ' done' : (i === idx && !done ? ' on' : '')); });
+  $('#sToggle').innerHTML = ic(state.stretchRun ? 'pause' : 'play') + (done ? 'Repetir' : state.stretchRun ? 'Pausar' : (sk > 0 ? 'Continuar' : 'Começar'));
+  $('#sSkip').hidden = done;
+  if (done && !state.stretchStar) { state.stretchStar = true; addStars(1); celebrate('Alongamento completo!'); }
+}
+
+/* ---------- ações ---------- */
+const ACTIONS = {
+  start: () => go(1),
+  guide: () => toggleGuide(),
+  speakc: () => speakText(coachText),
+  skip: () => { const id = STEPS[state.step]; state.done[id] = true; state.skipped[id] = true; if (id === 's5') { state.s5 = 3; } if (id === 's1') { state.treats = [true, true, true]; } if (id === 's6') { state.shouts = 3; } render(false); updateChrome(); },
+  treat: (el, v) => {
+    const i = Number(v); if (state.treats[i] || state.done.s1) { return; }
+    state.treats[i] = true; el.classList.add('done');
+    const x = Number(el.dataset.x); const dx = 568 - x, dy = 16;
+    const a = anim(el.parentNode, [{ transform: 'translate(0px,0px) scale(1)' }, { transform: 'translate(' + (dx * 0.5) + 'px,' + (dy * 0.5 - 90) + 'px) scale(1.2)', offset: 0.5 }, { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.55)', opacity: 0.2 }], { duration: REDUCED ? 1 : 750, easing: 'ease-in-out' });
+    const fin = () => { el.parentNode.style.display = 'none'; };
+    if (a) { a.onfinish = fin; } else { fin(); }
+    const n = state.treats.filter(Boolean).length; setCount(n + '/3');
+    if (n < 3) { setCoach('Muito bem! Falta' + (3 - n === 1 ? ' 1 docinho' : 'm 2 docinhos') + '.', 'ok'); } else { setTimeout(() => complete('s1'), 700); }
+  },
+  sign: (el, v) => {
+    if (state.done.s2) { return; }
+    if (v === 'a') { state.tries.s2++; el.classList.remove('shake'); void el.getBoundingClientRect(); el.classList.add('shake'); setCoach('Hmm… o atalho é escuro! A mamãe disse: direto pela trilha. Tente a outra placa.', 'warn'); return; }
+    $$('[data-act="sign"]').forEach(markDone);
+    const a = anim($('#chapMove'), [{ transform: 'translate(0px,0px)' }, { transform: 'translate(125px,-14px)', offset: 0.5 }, { transform: 'translate(250px,-6px)' }], { duration: REDUCED ? 1 : 1500, easing: 'ease-in-out' });
+    setCoach('Isso! Direto pela trilha da vovó. Vamos lá!', 'ok');
+    if (a) { a.onfinish = () => complete('s2'); } else { complete('s2'); }
+  },
+  bush: (el, v) => {
+    if (state.done.s3) { return; }
+    if (v !== '2') { state.tries.s3++; el.classList.remove('shake'); void el.getBoundingClientRect(); el.classList.add('shake'); setCoach(state.tries.s3 % 2 ? 'Só tem folhinhas aqui! Procure os olhinhos amarelos.' : 'Hum, nada por aqui. Tente outro arbusto!', 'warn'); return; }
+    $$('[data-act="bush"]').forEach(markDone);
+    const w = $('#wolfPop'); w.style.opacity = 1;
+    anim(w, [{ transform: 'translateY(30px) scale(.7)', opacity: 0 }, { transform: 'translateY(0) scale(1.06)', opacity: 1, offset: 0.7 }, { transform: 'translateY(0) scale(1)', opacity: 1 }], { duration: REDUCED ? 1 : 600, easing: 'ease-out' });
+    anim($('#wolfBushW'), [{ transform: 'translate(0px,0px)' }, { transform: 'translate(90px,0px)' }], { duration: REDUCED ? 1 : 500 });
+    $('#wolfBushW .blink').style.display = 'none';
+    setTimeout(() => complete('s3'), 600);
+  },
+  belly: (el) => {
+    if (state.done.s4) { return; }
+    markDone(el);
+    const g = $('#fx4'); let s = '';
+    for (let i = 0; i < 7; i++) { const a = (i / 7) * Math.PI * 2; const x = 400 + Math.cos(a) * 80, y = 322 + Math.sin(a) * 56; s += '<path class="snow" style="animation-delay:' + (i * 0.08) + 's" transform="translate(' + x.toFixed(0) + ' ' + y.toFixed(0) + ')" d="M0 -12 V12 M-10 -6 L10 6 M-10 6 L10 -6"/>'; }
+    g.innerHTML = s; setTimeout(() => { g.innerHTML = ''; }, 1700);
+    setTimeout(() => complete('s4'), 500);
+  },
+  feat: (el, v) => {
+    if (state.done.s5) { return; }
+    const cur = FEATS[state.s5];
+    if (v !== cur.id) { state.tries.s5++; el.classList.remove('shake'); void el.getBoundingClientRect(); el.classList.add('shake'); setCoach('Hmm, não é aí! Procure ' + cur.hint + '.', 'warn'); return; }
+    markDone(el); state.s5++; setCount(state.s5 + '/3');
+    if (state.s5 >= 3) { setCoach(cur.a + ' Essa não é a vovó… é o Lobo!', 'ok'); setTimeout(() => complete('s5'), 900); return; }
+    setCoach(cur.a, 'ok');
+    const n = state.s5;
+    setTimeout(() => { if (STEPS[state.step] === 's5' && state.s5 === n) { setCoach(FEATS[n].q); } }, 1700);
+  },
+  shout: () => {
+    if (state.done.s6 || state.shouts >= 3) { return; }
+    state.shouts++; $$('.mdot').forEach((d, i) => d.classList.toggle('on', i < state.shouts)); setCount(state.shouts + '/3');
+    $('#shoutFx').insertAdjacentHTML('beforeend', '<text class="shout-t" x="330" y="196" style="font-size:' + (26 + state.shouts * 12) + 'px">SOCORRO!</text>');
+    setTimeout(() => { const t = $('#shoutFx text'); if (t) { t.remove(); } }, 1050);
+    if (state.shouts < 3) { setCoach(state.shouts === 1 ? 'Mais alto! Grite de novo!' : 'Quase lá! Mais uma vez, com toda a força!', 'warn'); return; }
+    $('#shoutBtn').disabled = true; setCoach('Alguém ouviu! O caçador está chegando…', 'ok');
+    const h = $('#hunterW'); h.style.opacity = 1;
+    anim(h, [{ transform: 'translateX(380px)' }, { transform: 'translateX(0px)' }], { duration: REDUCED ? 1 : 1400, easing: 'ease-out' });
+    setTimeout(() => { anim($('#wolfW'), [{ transform: 'translateX(0px)', opacity: 1 }, { transform: 'translateX(-520px)', opacity: 0 }], { duration: REDUCED ? 1 : 900, easing: 'ease-in' }); }, REDUCED ? 1 : 900);
+    setTimeout(() => { $('#vovoW').style.opacity = 1; anim($('#vovoW'), [{ opacity: 0 }, { opacity: 1 }], { duration: 400 }); complete('s6'); }, REDUCED ? 5 : 2100);
+  },
+  quiz: (el, v) => { state.quiz = Number(v); refreshQuiz(); },
+  zone: (el, v) => { state.body = state.body.includes(v) ? state.body.filter((x) => x !== v) : state.body.concat(v); refreshBody(); },
+  help: (el, v) => { state.helps = state.helps.includes(v) ? state.helps.filter((x) => x !== v) : state.helps.concat(v); refreshHelps(); },
+  breathToggle: () => { if (state.breathTk >= BREATH_TICKS) { state.breathTk = 0; state.breathRun = true; state.after = null; state.breathStar = false; } else { state.breathRun = !state.breathRun; } updateBreath(true); },
+  after: (el, v) => { state.after = v; updateBreath(); },
+  stretchToggle: () => { if (state.stretchTk >= STRETCH_TICKS) { state.stretchTk = 0; state.stretchRun = true; state.stretchStar = false; } else { state.stretchRun = !state.stretchRun; } updateStretch(true); },
+  stretchSkip: () => { const n = (Math.floor(state.stretchTk / 50) + 1) * 50; state.stretchTk = Math.min(n, STRETCH_TICKS); if (state.stretchTk >= STRETCH_TICKS) { state.stretchRun = false; } updateStretch(true); },
+  scenery: (el, v) => { state.scenery = v; refreshCreate(); },
+  char: (el, v) => { state.chars[v] = !state.chars[v]; refreshCreate(); }
+};
+stage.addEventListener('click', (e) => { const el = e.target.closest('[data-act]'); if (el && stage.contains(el) && ACTIONS[el.dataset.act]) { ACTIONS[el.dataset.act](el, el.dataset.v); } });
+stage.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter' && e.key !== ' ') { return; }
+  const el = e.target.closest('.hot'); if (!el) { return; }
+  e.preventDefault(); if (ACTIONS[el.dataset.act]) { ACTIONS[el.dataset.act](el, el.dataset.v); }
+});
+stage.addEventListener('input', (e) => {
+  if (e.target.id === 'fearrange') { state.fear = Number(e.target.value); state.fearTouched = true; refreshFear(); }
+  if (e.target.id === 'ending') { state.ending = e.target.value; }
+});
+
+/* ---------- shell ---------- */
+function blocked() { const id = STEPS[state.step]; return !!STORY[id] && !state.done[id]; }
+function updateChrome() {
+  const step = state.step; const sec = SECTIONS.find((x) => step >= x.first && step <= x.last);
+  $('#prog').innerHTML = SECTIONS.map((x) => '<button class="seg ' + (sec && sec.id === x.id ? 'now' : (step > x.last ? 'done' : '')) + '" data-go="' + x.first + '" aria-label="Ir para ' + x.name + '"><span class="segbar"></span><span class="segname">' + x.name + '</span></button>').join('');
+  $('#bPrev').disabled = step === 0;
+  const last = step === STEPS.length - 1;
+  $('#nextLbl').textContent = step === 0 ? 'Começar' : last ? 'Recomeçar' : 'Continuar';
+  $('#bNext').disabled = blocked();
+  $('#bNext').title = blocked() ? 'Ajude a Chapeuzinho para continuar (ou toque em Pular)' : '';
+  $('#footMid').innerHTML = step === 0 ? 'Capa' : '<span class="fm1">' + sec.name + ' · </span>' + (step - sec.first + 1) + ' de ' + (sec.last - sec.first + 1);
+  $('#starN').textContent = state.stars;
+}
+function fitHot() {
+  const MIN = 46, CAP = 2;
+  $$('#stage .hot').forEach((g) => {
+    Array.from(g.children).filter((c) => (c.getAttribute('fill') || '').indexOf('0.01') > -1).forEach((h) => {
+      h.style.transform = '';
+      const r = h.getBoundingClientRect(); if (!r.width || !r.height) { return; }
+      const sx = Math.min(CAP, Math.max(1, MIN / r.width)), sy = Math.min(CAP, Math.max(1, MIN / r.height));
+      if (sx > 1.02 || sy > 1.02) { h.style.transformBox = 'fill-box'; h.style.transformOrigin = g.dataset.grow === 'up' ? 'center 62%' : g.dataset.grow === 'down' ? 'center 30%' : 'center'; h.style.transform = 'scale(' + sx.toFixed(2) + ',' + sy.toFixed(2) + ')'; }
+    });
+  });
+}
+let fitTimer = 0;
+window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitHot, 120); });
+function render(scroll) {
+  const id = STEPS[state.step];
+  stage.innerHTML = VIEWS[id]();
+  if (MOUNT[id]) { MOUNT[id](); }
+  fitHot();
+  if (scroll !== false) { window.scrollTo(0, 0); try { stage.focus({ preventScroll: true }); } catch (e) { /* ignora */ } }
+}
+function go(n) {
+  stopSpeech(); state.breathRun = false; state.stretchRun = false; lastPose = -1; lastBWord = '';
+  closeGuide();
+  state.step = Math.max(0, Math.min(STEPS.length - 1, n)); state.max = Math.max(state.max, state.step);
+  render(true); updateChrome();
+}
+function guideKey() { const id = STEPS[state.step]; return STORY[id] ? 'story' : id; }
+function toggleGuide() { if (state.guide) { closeGuide(); } else { const g = GUIDE[guideKey()]; $('#guideTitle').textContent = g[0]; $('#guideBody').textContent = g[1]; $('#guide').hidden = false; state.guide = true; $('#bGuide').setAttribute('aria-pressed', 'true'); $('#bGuide').classList.add('on'); $('#guideClose').focus(); } }
+function closeGuide() { state.guide = false; $('#guide').hidden = true; $('#bGuide').setAttribute('aria-pressed', 'false'); $('#bGuide').classList.remove('on'); }
+function restart() { stopSpeech(); closeGuide(); state = fresh(); lastPose = -1; lastBWord = ''; render(true); updateChrome(); }
+
+$('#bPrev').addEventListener('click', () => go(state.step - 1));
+$('#bNext').addEventListener('click', () => { if (state.step === STEPS.length - 1) { restart(); } else { go(state.step + 1); } });
+$('#bSpeak').addEventListener('click', () => speakText(currentText()));
+$('#bGuide').addEventListener('click', toggleGuide);
+$('#guideClose').addEventListener('click', closeGuide);
+$('#bRestart').addEventListener('click', restart);
+$('#prog').addEventListener('click', (e) => { const b = e.target.closest('[data-go]'); if (b) { go(Number(b.dataset.go)); } });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && state.guide) { closeGuide(); } });
+if (!('speechSynthesis' in window)) { $('#bSpeak').hidden = true; }
+
+setInterval(() => {
+  let hit = false;
+  if (state.breathRun) { state.breathTk = Math.min(state.breathTk + 1, BREATH_TICKS); if (state.breathTk >= BREATH_TICKS) { state.breathRun = false; } hit = true; if (STEPS[state.step] === 'breath') { updateBreath(); } }
+  if (state.stretchRun) { state.stretchTk = Math.min(state.stretchTk + 1, STRETCH_TICKS); if (state.stretchTk >= STRETCH_TICKS) { state.stretchRun = false; } hit = true; if (STEPS[state.step] === 'stretch') { updateStretch(); } }
+  return hit;
+}, 200);
+
+const startAt = STEPS.indexOf(location.hash.slice(1));
+if (startAt > 0) { state.step = startAt; state.max = startAt; }
+render(false); updateChrome();
+})();
+</script>
+</body>
+</html>
